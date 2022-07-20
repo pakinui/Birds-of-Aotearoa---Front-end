@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en-nz">
-<header>
+
+<head>
     <title>Birds of Aotearoa</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="index.css">
-</header>
+</head>
 
 <main>
     <header>
-        <h1>Birds of Aotearoa</h1>
+        <h1 id="header-title">Birds of Aotearoa</h1>
     </header>
 
     <!-- sidebar -->
     <div class="sidebar" id="mySidebar">
         <div class="searchArea">
-            <h3>Filter Birds</h3>
-            <p>Search</p>
+            <h3 id="filter-title">Filter Birds</h3>
+            <p id="search-title">Search</p>
             <input type="text" placeholder=". . ." id="searchbar">
             <!-- Conservation Status-->
             <p>Conservation Status</p>
@@ -36,11 +37,11 @@
                 </div>
             </div>
             </br>
-            
+
             <!-- Sort by-->
             <p>Sort by</p>
             <div class="sort-by-dropdown">
-                
+
                 <span>Lightest to Heaviest</span>
                 <div class="SB-dropdown-content">
                     <p>Lightest to Heaviest</p>
@@ -49,25 +50,30 @@
                     <p>Common to Extinct</p>
                 </div>
             </div>
+            </br>
+            </br>
+            <button class="search-button">FILTER RESULTS</button>
+
             <p class="search-number" id="searchNumber">4 results found</p>
         </div>
 
         <!-- lower area of sidebar-->
         <div class="lowerArea">
             <h4>Conservation Status</h4>
-            <p><span class = "dot" id = "dot1"></span>Not Threatened</p>
-            <p><span class = "dot" id = "dot2"></span>Naturally Uncommon</p>
-            <p><span class = "dot" id = "dot3"></span>Relict</p>
-            <p><span class = "dot" id = "dot4"></span>Recovering</p>
-            <p><span class = "dot" id = "dot5"></span>Declining</p>
-            <p><span class = "dot" id = "dot6"></span>Nationally Increasing</p>
-            <p><span class = "dot" id = "dot7"></span>Nationally Vulnerable</p>
-            <p><span class = "dot" id = "dot8"></span>Nationally Endangered</p>
-            <p><span class = "dot" id = "dot9"></span>Nationally Critical</p>
-            <p><span class = "dot" id = "dot10"></span>Extinct</p>
-            <p><span class = "dot" id = "dot11"></span>Data Deficient</p>
-            </br>
-            <p id = "status-link">Conservation status from <a href = "https://www.doc.govt.nz/nature/conservation-status/">DOC website</a></p>
+            <p><span class="dot" id="dot1"></span>Not Threatened</p>
+            <p><span class="dot" id="dot2"></span>Naturally Uncommon</p>
+            <p><span class="dot" id="dot3"></span>Relict</p>
+            <p><span class="dot" id="dot4"></span>Recovering</p>
+            <p><span class="dot" id="dot5"></span>Declining</p>
+            <p><span class="dot" id="dot6"></span>Nationally Increasing</p>
+            <p><span class="dot" id="dot7"></span>Nationally Vulnerable</p>
+            <p><span class="dot" id="dot8"></span>Nationally Endangered</p>
+            <p><span class="dot" id="dot9"></span>Nationally Critical</p>
+            <p><span class="dot" id="dot10"></span>Extinct</p>
+            <p><span class="dot" id="dot11"></span>Data Deficient</p>
+
+            <p id="status-link">Conservation status from <a
+                    href="https://www.doc.govt.nz/nature/conservation-status/">DOC website</a></p>
         </div>
 
 
@@ -76,6 +82,10 @@
     <!-- main area-->
     <div class="main" id="myMain">
         <h3>Main</h3>
+            <div id = "bird1">
+                <p id = "bird-para">Hi, need to add birds here</p>
+            </div>
+        
 
     </div>
 </main>

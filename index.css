@@ -132,8 +132,8 @@ footer {
 }
 
 .dot {
-    height: 12px;
-    width: 12px;
+    height: 1.5vmin;
+    width: 1.5vmin;
     border-radius: 50vw;
     display: inline-block;
     margin-left: 1vw;
@@ -227,16 +227,38 @@ footer {
     top: 7.5vh;
     left: 25vw;
     overflow-y: scroll;
+    overflow-x: none;
+
     display: flex;
+    flex-wrap: wrap;
+    
+    grid-template-rows: 1fr 1fr;
     justify-content: space-evenly;
+}
+
+.birdCard {
+    background-color: white;
+    height: 50%;
+    width: 35%;
+    margin: 5%;
+    position: relative;
+
+}
+
+#bird {
+    background-color: white;
+    height: 50%;
+    width: 35%;
+    margin: 5%;
+    position: relative;
 }
 /*
 bird cards
 */
 .main div { 
     background-color: white;
-    height: 60%;
-    width: 40%;
+    height: 50%;
+    width: 35%;
     margin: 5%;
     position: relative;
 }
@@ -271,19 +293,60 @@ ratio is,
 
 .bottomInfo {
     position: absolute !important;
-    background-color: #1b8f36cb !important;
-    width: 90% !important;
+    width: 100% !important;
+    
+    margin: 0 0 0 0 !important;
     bottom: 0vh !important;
-    height: 35% !important;
+    height: 40% !important;
+
+}
+.bottomInfo h2 {
+    padding: 1vmin 1vmin 0vmin 1vmin;
+    
 }
 
 .gridInfo {
     background-color: #02a02700 !important;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 40% 60%;
     width: 90% !important;
     grid-template-rows: repeat(6, 1fr);
+    
+}
+.gridInfo p {
+    padding: 0.5vmin 0.5vmin 0vmin 0.5vmin;
 }
 .gridInfo #bold {
     font-weight: bold;
+}
+
+.circle {
+    height: 3.5vmin;
+    width: 3.5vmin;
+    border-radius: 50vw;
+    display: inline-block;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    position:  absolute;
+    background-color: red ;
+    bottom: 36.4%; 
+    right: 4.1%;
+    border-radius: 2vmin;
+    
+    
+}
+
+.circleBorder {
+    height: 4vmin;
+    width: 4vmin;
+    border-radius: 50vw;
+    display: inline-block;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    position:  absolute;
+    background-color: rgb(255, 255, 255) !important;
+    bottom: 35.8%; 
+    right: 3.3%;
+    border-radius: 2vmin;
+    
 }

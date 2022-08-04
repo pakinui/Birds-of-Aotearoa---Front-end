@@ -21,39 +21,39 @@
             <input type="text" placeholder=". . ." id="searchbar">
             <!-- Conservation Status-->
             <p>Conservation Status</p>
-            <div class="conservation-status-dropdown">
-                <span>All</span>
-                <div class="CS-dropdown-content">
-                    <p>All</p>
-                    <p>Not Threatened</p>
-                    <p>Naturally Uncommon</p>
-                    <p>Relict</p>
-                    <p>Recovering</p>
-                    <p>Declining</p>
-                    <p>Nationally Increasing</p>
-                    <p>Nationally Endangered</p>
-                    <p>Nationally Critical</p>
-                    <p>Extinct</p>
-                    <p>Data Deficient</p>
-                </div>
-            </div>
+            <!-- <div class="dropdown"> -->
+                <select class = "dropdown" id = "CS-button">
+                <!-- <div class="dropdown-content"> -->
+                    <option>All</option>
+                    <option>Not Threatened</option>
+                    <option>Naturally Uncommon</option>
+                    <option>Relict</option>
+                    <option>Recovering</option>
+                    <option>Declining</option>
+                    <option>Nationally Increasing</option>
+                    <option>Nationally Endangered</option>
+                    <option>Nationally Critical</option>
+                    <option>Extinct</option>
+                    <option>Data Deficient</option>
+                </select>
+            <!-- </div> -->
             </br>
 
             <!-- Sort by-->
             <p>Sort by</p>
-            <div class="sort-by-dropdown">
+            <!-- <div class="dropdown"> -->
 
-                <span>Lightest to Heaviest</span>
-                <div class="SB-dropdown-content">
-                    <p>Lightest to Heaviest</p>
-                    <p>Heaviest to Lightest</p>
-                    <p>Extinct to Common</p>
-                    <p>Common to Extinct</p>
-                </div>
-            </div>
+                <!-- <button id ="SB-button">Lightest to Heaviest</button> -->
+                <select class="dropdown" id ="SB-button">
+                    <option>Lightest to Heaviest</option>
+                    <option>Heaviest to Lightest</option>
+                    <option>Extinct to Common</option>
+                    <option>Common to Extinct</option>
+                </select>
+            <!-- </div> -->
             </br>
             </br>
-            <button class="search-button">FILTER RESULTS</button>
+            <button id = "search-button" type = "button">FILTER RESULTS</button>
 
             <p class="search-number" id="searchNumber">4 results found</p>
         </div>

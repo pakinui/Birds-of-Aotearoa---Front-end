@@ -9,7 +9,7 @@ h3{
 }
 header {
     background-color: rgb(141, 141, 199);
-    width: 100vw;
+    width: 100%;
     
     height: 7.5vh;
     font-size: 2vh;
@@ -22,7 +22,7 @@ header {
     vertical-align: middle;
     text-align: center;
     padding: 1vh 1vw 1vh 1vw;
-    width: 100vw;
+    width: 98vw;
     height: 5vh;
 }
 
@@ -30,9 +30,10 @@ header {
     font-size: 2vmin;
 }
 
-body {
+/* body {
     background-color: rgb(238, 220, 214);
-}
+    width: 100%;
+} */
 
 #filter-title{
     margin: 1vw 1vw 1vw 1vw;
@@ -63,10 +64,18 @@ body {
 
 footer {
     background-color: rgb(105, 105, 133);
-    width: 100vw;
-    height: 2vh;
+    width: 100%;
+    height: 3.5vh;
     bottom: 0;
     position: fixed;
+}
+
+footer p {
+    padding-top: 1vmin;
+    padding-bottom: 1vmin;
+    text-align: center;
+    font-size: 1vmin;
+    color: white;
 }
 
 .conservation-status-dropdown {
@@ -266,12 +275,14 @@ footer {
     left: 25vw;
     overflow-y: scroll;
     overflow-x: none;
-
+    padding: 2vh 4.5vw 2vh 4.5vw;
+    
+    
     display: flex;
     flex-wrap: wrap;
     
     grid-template-rows: 1fr 1fr;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 .birdCard {
@@ -299,26 +310,34 @@ bird cards
     width: 35%;
     margin: 5%;
     position: relative;
+    /* display: flex; */
+    justify-content: center;
 }
 /*
 image are all the same size
 ratio is,
 */
 .birdPhoto{
-    width: 100%;
-    height: 60%;
+    
     object-fit: cover;
-    object-position: -6vmin 0; /*may want to change this later */
+    height: 60%;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    
+    
     
 }
 
 .topInfo{
     background-color: rgba(128, 128, 128, 0) !important;
     position: absolute;
-    bottom: 7vh !important;
+    top: 20vh !important;
     left: 0%;
     width: 90%!important;
     height: 5vmin;
+    font-size: 1.5vmin;
     
 }
 .topInfo p {
@@ -336,6 +355,7 @@ ratio is,
     margin: 0 0 0 0 !important;
     bottom: 0vh !important;
     height: 40% !important;
+    font-size: 1.2vmin;
 
 }
 .bottomInfo h2 {
@@ -347,12 +367,14 @@ ratio is,
     background-color: #02a02700 !important;
     display: grid;
     grid-template-columns: 40% 60%;
-    width: 90% !important;
+    width: 95% !important;
     grid-template-rows: repeat(6, 1fr);
+    
     
 }
 .gridInfo p {
     padding: 0.5vmin 0.5vmin 0vmin 0.5vmin;
+     
 }
 .gridInfo #bold {
     font-weight: bold;
@@ -366,7 +388,7 @@ ratio is,
     margin-left: 1vw;
     margin-right: 1vw;
     position:  absolute;
-    background-color: red ;
+    background-color: #02a028 ;
     bottom: 36.4%; 
     right: 4.1%;
     border-radius: 2vmin;

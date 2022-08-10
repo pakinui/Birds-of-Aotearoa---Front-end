@@ -5,15 +5,17 @@
     <title>Birds of Aotearoa</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media = "screen and (min-device-width: 600px)" href="desktop.css">
-    <link rel="stylesheet"  media = "screen and (max-device-width: 600px)" href="mobile.css">
+    <!-- <link rel="stylesheet" media = "screen and (min-device-width: 600px)" href="desktop.css"> -->
+    <!-- <link rel="stylesheet"  media = "screen and (max-device-width: 600px)" href="mobile.css"> -->
     <!-- <script defer src="index.js"></script> -->
     <script>
         if(screen && screen.width < 600){
             document.write('<script defer src="mobile.js"><\/script>');
+                document.write('<link rel="stylesheet"  media = "screen and (max-device-width: 600px)" href="mobile.css">');
             console.log('mobile');
         }else{
             document.write('<script defer src="desktop.js"><\/script>');
+            document.write('<link rel="stylesheet" media = "screen and (min-device-width: 600px)" href="desktop.css">');
             console.log('desktop');
         }
     </script>

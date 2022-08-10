@@ -61,7 +61,7 @@ function searchNames(searchArray, input) {
         let bird = searchArray[i];
         let names = '';
         names = names.concat(bird.primary_name.toLowerCase() + ' ' + bird.english_name.toLowerCase() + ' ' + bird.scientific_name.toLowerCase() + ' ' + bird.order.toLowerCase() + ' ' + bird.family.toLowerCase());
-        for(let y = 0; y < bird.other_names.length ; y++){
+        for (let y = 0; y < bird.other_names.length; y++) {
             names = names.concat(' ' + bird.other_names[y].toLowerCase());
         }
 
@@ -148,11 +148,18 @@ function searchEvent(eventData) {
 
 
         printing(data2);
-    } else {//if s.value = "Common to Extinct"
+    } else if (s.value == "Extinct to Common") {//if s.value = "Common to Extinct"
         let dataCopy = Array.from(data);
         let data2 = ext2Com(dataCopy).reverse();
         printing(data2);
 
+    } else if (s.value == "Shortest to Tallest") {
+        data.sort(function (a, b) { return a.size.length.value - b.size.length.value });
+        printing(data);
+    } else {//s.value == "Tallest to Shortest"
+        
+        data.sort(function (a, b) { return b.size.length.value - a.size.length.value });
+        printing(data);
     }
 
     function comm2Exti(value, index, array) {
@@ -171,15 +178,15 @@ function searchEvent(eventData) {
         }
 
         let found = document.getElementById('searchNumber');
-    let num = arr.length;
-    found.textContent = num + ' results found.';
+        let num = arr.length;
+        found.textContent = num + ' results found.';
     }
 
 
 }
 let button = document.querySelector("#search-button");
 //console.log(button.textContent);
-if(button){
+if (button) {
     button.addEventListener('click', searchEvent);
 }
 
@@ -359,7 +366,7 @@ function printCards(array, count) {
 
     main.appendChild(cardArea);
 
-    
+
 
 
 }
@@ -391,14 +398,13 @@ let date = document.getElementById('today');
 let today = new Date();
 //console.log(today);
 let dayString = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
-if(date){
+if (date) {
     date.textContent = dayString;
 }
 
 
 let display = navigator.userAgent;
 console.log(display);
-
 
 
 

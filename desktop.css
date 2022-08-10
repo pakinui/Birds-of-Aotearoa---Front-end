@@ -358,7 +358,7 @@ footer p {
 }
 .credits{
     font-size: xx-small;
-    right: 3%;
+    right: 1%;
     bottom: 1.5%;
     position: absolute;
 }
@@ -436,22 +436,24 @@ ratio is,
     font-size: 93%;
     width: 100%;
     font-weight: bold;
-
+    
 }
 
 .gridInfo {
     
     display: grid;
     grid-template-columns: 30% 70%;
-    width: 94% !important;
+    width: 98% !important;
     height: 75% !important;
     grid-template-rows: 25% 20% 17% 15% 15% 15%;
-    margin-left: 0.5vw;
+    margin-left: 0.2vw;
+    
 
 }
 
 .gridInfo p {
-    font-size: 85%;
+    font-size: 80%;
+    
     text-align: left;
     /* padding: 0vmin 0.5vmin 0vmin 0.5vmin; */
 
@@ -517,27 +519,30 @@ ratio is,
     padding-right: 1vw; */
 
     border-right-style: outset;
-    font-size: 2vmin;
-    font-weight: bold;
+    
+    
     width: 6%;
-    display: flex;
+    /* display: flex; */
 
 }
 
 .arrows h1{
     
     height: 5vh;
-    line-height: 4.7vh;
-    /* padding: 1vh 1vw 1vh 1vw; */
-    padding-left: 15%;
-    padding-right: 15%;
+    
+    width: 100%;
+    padding: 0.8vh 0vw 0.8vh 0vw;
+    font-size: 2vw;
+    
+    /* padding-right: 15%; */
+    text-align: center;
 
 }
 
 
 
 .website {
-    background-color: rgb(247, 247, 247);
+    background-color: rgb(255, 255, 255);
     width: 87%;
     display: flex;
     
@@ -560,14 +565,15 @@ ratio is,
 }
 .date{
     width:7%;
-
+    
     border-left-style: outset;
 }
 #today {
-    font-size: 2vmin;
+    font-size: 1.0vw;
     height: 5vh;
     line-height: 4.9vh;
-    padding-left: 10%; 
+    text-align: center;
+    
 }
 .sidebar hr{
 

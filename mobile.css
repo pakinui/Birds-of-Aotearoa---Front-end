@@ -1,0 +1,511 @@
+@media only screen and (max-device-width: 600px) {
+
+    html,
+    body,
+    footer,
+    main {
+        margin: 0 !important;
+        padding: 0 !important;
+        /* background-color: green; */
+        overflow-y: hidden;
+    }
+
+    * {
+        font-family: "Lucida Console", "Courier New", monospace;
+        font-weight: lighter;
+        border-style: none;
+
+    }
+
+    main {
+        background-color: rgb(195, 195, 195) !important;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 87vh;
+
+
+
+
+    }
+
+    .main {
+
+        /* background-color: rgb(0, 0, 0); */
+        justify-content: space-evenly;
+        display: flex;
+        flex-wrap: wrap;
+        /* flex-direction: row; */
+        position: fixed;
+        overflow-x: hidden;
+        height: 87vh;
+        overflow-y: scroll !important;
+
+
+    }
+
+    footer {
+        height: 5vh;
+        width: 100%;
+        bottom: 0;
+        background-color: blue;
+        margin: 0;
+        padding: 0;
+    }
+
+    footer * {
+        margin: 0 !important;
+        padding: 0.5vh 1vw 0.5vh 1vw !important;
+        font-size: 2vw;
+        height: 2vh;
+        width: 100vw;
+        line-height: 2vh;
+        color: white;
+
+    }
+
+    footer p {
+        text-align: center;
+    }
+
+    .sidebarButton {
+        background-color: grey;
+        border: none;
+        color: black;
+        height: 3vh;
+        width: 7vw;
+        line-height: 3vh;
+        font-size: 3.5vw;
+        border-right-style: groove;
+    }
+
+
+    .topbar {
+        height: 3vh !important;
+        width: 99%;
+        margin: 0 !important;
+        display: flex;
+        border-style: groove;
+        background-color: grey;
+    }
+
+    header {
+        display: flex;
+        height: 5vh;
+        width: 100%;
+        margin: 0 !important;
+        background-color: rgb(16, 16, 170);
+    }
+
+    header h1 {
+        color: white;
+        height: 5vh;
+        line-height: 2.5vh;
+        font-size: 2vh;
+    }
+
+    header img {
+        height: 2.5vh;
+        padding: 1.3vh 1vh 1vh 1vh;
+    }
+
+    .arrows {
+        height: 3vh;
+        width: 10vw;
+        background-color: grey;
+        display: flex;
+        border-right-style: groove;
+    }
+
+    .arrows h1 {
+        height: 2vh;
+        line-height: 0.7vh;
+        font-size: 3.5vw;
+        font-weight: bold;
+        padding-left: 1.8vw;
+    }
+
+    .website {
+        width: 63vw;
+        height: 3vh;
+        background-color: white;
+        display: flex;
+    }
+
+    .website h1 {
+        height: 2vh;
+        width: 75vw;
+        line-height: 1vh;
+        padding-left: 1vw;
+        font-size: 1.5vh;
+
+    }
+
+    .page_icon {
+        height: 2vh;
+        padding: 0.5vh 0.5vw 0.5vh 0.5vw;
+        border-right-style: groove;
+    }
+
+    .date {
+        width: 16vw;
+
+
+
+    }
+
+    #today {
+        height: 2vh;
+        line-height: 1vh;
+        padding-left: 1.5vw;
+        font-size: 2.5vw;
+    }
+
+    .sidebar {
+        padding: 5%;
+        width: 0%;
+        height: 100%;
+        display: none;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+
+    .cardBorder {
+        border-style: outset;
+        height: 70vh;
+        border-color: rgba(46, 46, 46, 0.452);
+        width: 90vw;
+        /* border-color: red; */
+        margin: 4vw 4vw 4vw 4vw;
+        position: relative;
+        padding: 0 !important;
+    }
+
+    .birdCard {
+        background-color: grey;
+        top: 1vw;
+        left: 1vw;
+        height: 68vh;
+        width: 87vw;
+        position: absolute;
+        border-style: inset;
+        border-color: rgba(27, 27, 27, 0.527);
+        margin: 0% !important;
+        padding: 0 !important;
+    }
+
+    #bird {
+        background-color: white;
+        height: 50%;
+        width: 36%;
+        /* margin: 5%; */
+        position: absolute;
+    }
+
+    .credits {
+        font-size: xx-small;
+        right: 3%;
+        bottom: 1.5%;
+        /* background-color: green; */
+        position: absolute;
+    }
+
+    .birdPhoto {
+
+        object-fit: cover;
+        top: 7%;
+        height: 40%;
+        width: 85%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        border-style: inset;
+        border-width: thick;
+
+
+    }
+
+    .topInfo {
+
+        position: absolute;
+        top: 0vh !important;
+        left: 4%;
+        width: 98% !important;
+        height: 5vh;
+
+        /* padding: 0.5vh 1vw 0.5vh 1vw; */
+
+
+    }
+
+    /* .topInfo p {
+        color: rgb(0, 0, 0);
+        font-size: smaller;
+    
+    } */
+
+    .topInfo h2 {
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 6vw;
+        line-height: 1vw;
+    }
+
+    .bottomInfo {
+        position: absolute !important;
+        width: 100% !important;
+        /* background-color: green; */
+        margin: 0 0 0 0 !important;
+        bottom: 0vh !important;
+        height: 50% !important;
+        padding-left: 2vw;
+
+        /* font-weight: 30%; */
+
+    }
+
+    .cardHR {
+        margin: 1vh 4vw 1vh 0vw;
+        border-style: inset;
+        border-color: rgb(0, 0, 0) !important;
+
+    }
+
+    .bottomInfo h2 {
+        padding: 0.5vw 0vw 0.5vw 0vw;
+        margin: 0 !important;
+        font-size: 98%;
+        width: 96%;
+        text-align: center;
+
+        /* background-color: pink; */
+        font-weight: bold;
+
+    }
+
+    .gridInfo {
+        /* background-color: #96ac28c1 !important; */
+        display: grid;
+        grid-template-columns: 35% 65%;
+        width: 100% !important;
+        height: 26vh !important;
+        bottom: 0;
+        grid-template-rows: 6vh 5vh 5vh 4vh 4vh 3vh;
+        margin: 0vh 1vw 0vh 1vw !important;
+        /* border-style: solid;
+        
+        border-color: black; */
+        padding: 0 !important;
+
+
+    }
+
+    .gridInfo p {
+        /* background-color: white; */
+        /* border-bottom-style: solid;
+        
+        border-color: rgb(12, 164, 123); */
+
+        margin: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 90% !important;
+        height: 3.9vh;
+        width: 57vw;
+        /* line-height: 3.9vh; */
+        text-align: left;
+
+        /* font-weight: bold; */
+        /* padding: 0vmin 0.5vmin 0vmin 0.5vmin; */
+
+    }
+
+    .gridInfo #bold {
+
+
+        /* background-color: yellow !important; */
+        height: 6.0vh;
+
+        max-width: 20vw !important;
+        /* line-height: 3.9vh; */
+        font-size: 90%;
+        font-weight: bold;
+        /* left: 5vw; */
+        /* padding-left: 20vw; */
+        text-align: left !important;
+
+    }
+
+    #filter-title {
+        margin: 1vw 0% 1vw 0%;
+        font-weight: bold;
+        width: 100%;
+        /* background-color: red; */
+        font-size: 8vw;
+    }
+
+    .sidebar hr {
+
+        margin: 2% 0% 2% 0%;
+        border-color: rgb(77, 77, 77);
+        width: 100%;
+
+        border-style: inset !important;
+        /* border-style: groove; */
+    }
+
+    #lighter {
+        border-color: rgb(185, 185, 185) !important;
+    }
+
+    .searchArea {
+        margin: 0.5vh 0vw 0.5vh 0vw;
+    }
+
+    #search-title,
+    #CS-title,
+    #SB-title {
+        font-size: 5vw;
+        padding: 0;
+        margin: 1vw 0vw 1vw 0vw;
+    }
+
+    #searchbar {
+        width: 99%;
+        height: 3vh;
+    }
+
+    #SB-button,
+    #CS-button {
+        background-color: grey;
+        color: rgb(0, 0, 0);
+
+        font-size: 1.5vmin;
+        border: none;
+        padding: 0.5vmin 1vmin 0.5vmin 1vmin;
+        width: 100%;
+        height: 4vh;
+        cursor: pointer;
+        margin: 1vw 0vw 1vw 0vw;
+        font-size: 90%;
+    }
+
+    .dropdown {
+
+        background-color: rgb(165, 165, 165) !important;
+        color: rgb(0, 0, 0);
+
+        font-size: 1.5vw;
+        border: outset !important;
+        padding: 0.5vmin 1vmin 0.5vmin 1vmin;
+        width: 85%;
+        cursor: pointer;
+        margin: 0vmin 1vmin 0vmin 1vmin;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+
+        width: 85%;
+        margin: 0vmin 1vmin 0vmin 1vmin;
+        /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+        padding: 0.5vmin 1vmin 0.5vmin 1vmin;
+        z-index: 1;
+    }
+
+    .dot {
+        height: 4vw;
+        width: 4vw;
+        border-radius: 50vw;
+        display: inline-block;
+       
+        margin-right: 0.5vw;
+    
+    }
+    
+    #dot1 {
+        background-color: #02a028;
+    }
+    
+    #dot2 {
+        background-color: #649a31;
+    }
+    
+    #dot3 {
+        background-color: #99cb68;
+    }
+    
+    #dot4 {
+        background-color: #fecc33;
+    }
+    
+    #dot5 {
+        background-color: #fe9a01;
+    }
+    
+    #dot6 {
+        background-color: #c26967;
+    }
+    
+    #dot7 {
+        background-color: #9b0000;
+    }
+    
+    #dot8 {
+        background-color: #660032;
+    }
+    
+    #dot9 {
+        background-color: #320033;
+    }
+    
+    #dot10 {
+        background-color: black;
+    }
+    
+    #dot11 {
+        background-color: black;
+    }
+    
+    #status-link {
+        font-size: 4vw;
+        padding: 0.5vh 0vw 4vh 0vw;
+    }
+    .remMobile{
+        color: transparent;
+        border-color: transparent;
+        width: 0vw;
+        height: 0vw;
+        visibility: hidden !important;
+    }
+    
+    #search-button {
+        /* left: 23%; */
+        background-color: rgb(107, 107, 107) !important;
+        /* position: relative; */
+        width: 100%;
+        height: 5vh;
+        border-style: outset;
+        border-color: rgba(69, 69, 69, 0.512);
+        border-width: medium;
+    
+        font-size: 4.5vw;
+        vertical-align: middle;
+    
+    }
+
+    .lowerArea h4 {
+        font-size: 7vw;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 1vh;
+    }
+    
+    .lowerArea p {
+        font-size: 5vw;
+    }
+}

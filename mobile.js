@@ -3,7 +3,7 @@
     smaller than 600px. 
     i.e. a mobile phone
 */
-const birdFile = "./data/nzbird.json";
+const birdFile = "data/nzbird.json";
 let jsonData; // inital json file bird array
 /*
     array of colours and which conservation status they represent

@@ -6,6 +6,7 @@
 
 const birdFile = './data/nzbird.json';
 let jsonData; // inital json file bird array
+console.log('starting');
 getJSON();
 startDesktopWebsite();
 /*
@@ -19,7 +20,7 @@ const colours = [['Not Threatened', '#02a028'], ['Naturally Uncommon', '#649a31'
 //fetchData();
 
 async function getJSON() {
-    //console.log('starting to get JSON');
+    console.log('starting to get JSON');
     let response = await fetch(birdFile);
     let data = await response.text();
     jsonData = JSON.parse(data);

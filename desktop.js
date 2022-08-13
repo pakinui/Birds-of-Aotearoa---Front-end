@@ -6,6 +6,8 @@
 
 const birdFile = './data/nzbird.json';
 let jsonData; // inital json file bird array
+getJSON();
+startDesktopWebsite();
 /*
     array of colours and which conservation status they represent
 */
@@ -14,7 +16,25 @@ const colours = [['Not Threatened', '#02a028'], ['Naturally Uncommon', '#649a31'
 ['Nationally Increasing', '#c26967'], ['Nationally Vulnerable', '#9b0000'],
 ['Nationally Endangered', '#660032'], ['Nationally Critical', '#320033'],
 ['Extinct', '#000000'], ['Data Deficient', '#000000']];
-fetchData();
+//fetchData();
+
+async function getJSON() {
+    //console.log('starting to get JSON');
+    let response = await fetch(birdFile);
+    let data = await response.text();
+    jsonData = JSON.parse(data);
+    //console.log(jsonData[0].primary_name);//WORKS
+    //console.log(jsonData.length);//68
+
+    //firstBirdCard(0);
+    for (let i = 0; i < jsonData.length; i++) {
+        //birdCards(i);
+        printCards(jsonData, i);
+        //console.log(i);
+    }
+
+
+}
 
 /*
     function to fetch data 

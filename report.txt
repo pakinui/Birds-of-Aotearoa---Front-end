@@ -8,6 +8,7 @@ https://altitude.otago.ac.nz/schpo592/203-assignment-1
 COSC203 - Assignment One
 
 * a list of any third party code/libraries used
+- dont think i used any
 
 
 * a brief description of any unresolved issues

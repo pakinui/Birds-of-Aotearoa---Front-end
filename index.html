@@ -5,45 +5,44 @@
     <title>Birds of Aotearoa</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" media = "screen and (min-device-width: 600px)" href="desktop.css"> -->
-    <!-- <link rel="stylesheet"  media = "screen and (max-device-width: 600px)" href="mobile.css"> -->
-    <!-- <script defer src="index.js"></script> -->
+    <link rel="stylesheet" href="desktop.css">
     <script>
-        if(screen && screen.width < 600){
-            document.write('<script defer src="mobile.js"><\/script>');
-                document.write('<link rel="stylesheet"  media = "screen and (max-device-width: 600px)" href="mobile.css">');
+        
+        if (screen && screen.width < 600) {
+            document.write('<script defer src="mobile.js" id = "script"><\/script>');
+           // document.write('<link rel="stylesheet"  media = "screen and (max-device-width: 600px)" href="desktop.css">');
             console.log('mobile');
-        }else{
-            document.write('<script defer src="desktop.js"><\/script>');
-            document.write('<link rel="stylesheet" media = "screen and (min-device-width: 600px)" href="desktop.css">');
+        } else {
+            document.write('<script defer src="desktop.js" id = "script"><\/script>');
+            
             console.log('desktop');
         }
     </script>
 </head>
 
-<header id = "header">
-        <img id = "icon" src="icon2.png" alt="icon">
+<header>
+    <img id="icon" src="icon.png" alt="icon"> 
+    <h1 id="header-title">Birds of Aotearoa</h1>
+</header>
 
-        <h1 id="header-title">Birds of Aotearoa</h1>
-    </header>
-    <div class="topbar" id="topbar" >
-        <div class="arrows" id = "arrows">
-            <h1 id="a1">< ></h1>
-            <!-- <h1 id="a1">></h1> -->
-        </div>
-        <div class = "website">
-            <h1 id = "webText">COSC 203 - Assignment One</h1>
-            <img src="icon2.png" alt="hm" class="page_icon">
-        </div>
-
-        <div class = "date">
-            <h1 id="today">.</h1>
-        </div>
-        
-
+<!-- topbar area-->
+<div id="topbar">
+    <div id="home">
+        <button id="home-button">home</button>
     </div>
+    <div class="website">
+        <h1 id="webText">COSC 203 - Assignment One</h1>
+        <img src="icon.png" alt="icon" id="website_icon">
+    </div>
+
+    <div class="date">
+        <h1 id="today">.</h1>
+    </div>
+
+
+</div>
+
 <main>
-    
     
 
     <!-- sidebar -->
@@ -52,56 +51,57 @@
             <hr>
             <h3 id="filter-title">Filter Birds</h3>
             <hr>
-            <p id="search-title">Search</p>
-            <input type="text" placeholder="" id="searchbar">
-            <hr id = "lighter">
-            <!-- Conservation Status-->
-            <p id="CS-title">Conservation Status</p>
-            <!-- <div class="dropdown"> -->
-            <select class="dropdown" id="CS-button">
-                <!-- <div class="dropdown-content"> -->
-                <option>All</option>
-                <option>Not Threatened</option>
-                <option>Naturally Uncommon</option>
-                <option>Relict</option>
-                <option>Recovering</option>
-                <option>Declining</option>
-                <option>Nationally Increasing</option>
-                <option>Nationally Vulnerable</option>
-                <option>Nationally Endangered</option>
-                <option>Nationally Critical</option>
-                <option>Extinct</option>
-                <option>Data Deficient</option>
-            </select>
-            <!-- </div> -->
-                        <hr id = "lighter">
-            <!-- Sort by-->
-            <p id="SB-title">Sort by</p>
-            <!-- <div class="dropdown"> -->
+            <form>
+                <label for="searchbar" class="sidebarTitle">Search</label><br>
+                <input type="text" placeholder="" id="searchbar" name="searchbar"><br>
 
-            <!-- <button id ="SB-button">Lightest to Heaviest</button> -->
-            <select class="dropdown" id="SB-button">
-                <option>Lightest to Heaviest</option>
-                <option>Heaviest to Lightest</option>
-                <option>Extinct to Common</option>
-                <option>Common to Extinct</option>
-                <option>Tallest to Shortest</option>
-                <option>Shortest to Tallest</option>
-            </select>
-            <!-- </div> -->
-            
-            <hr id = "lighter2" class = "remMobile">
-            
-            <button id="search-button" type="button">FILTER RESULTS</button>
-            <hr id = "lighter">
-            <p class="search-number" id="searchNumber">68 results found</p>
-            
+                <hr class="lighter">
+
+                <label for="CS-button" class="sidebarTitle">Conservation Status</label><br>
+                <select class="dropdown" id="CS-button">
+                    <option>All</option>
+                    <option>Not Threatened</option>
+                    <option>Naturally Uncommon</option>
+                    <option>Relict</option>
+                    <option>Recovering</option>
+                    <option>Declining</option>
+                    <option>Nationally Increasing</option>
+                    <option>Nationally Vulnerable</option>
+                    <option>Nationally Endangered</option>
+                    <option>Nationally Critical</option>
+                    <option>Extinct</option>
+                    <option>Data Deficient</option>
+                </select>
+
+                <hr class="lighter">
+
+                <label for="SB-button" class="sidebarTitle">Sort by</label>
+                <select class="dropdown" id="SB-button">
+                    <option>A to Z by Scientific name</option>
+                    <option>Z to A by Scientific name</option>
+                    <option>Lightest to Heaviest</option>
+                    <option>Heaviest to Lightest</option>
+                    <option>Tallest to Shortest</option>
+                    <option>Shortest to Tallest</option>
+                    <option>Extinct to Common</option>
+                    <option>Common to Extinct</option>
+                </select>
+
+                <hr class="lighter" > 
+                <!-- dont know if i need the remMobilke thing check this-->
+
+                <input type="submit" value="Filter Results" id="search-button">
+            </form>
+           
+            <hr class="lighter">
+            <p id="searchNumber">68 results found</p>
+
         </div>
 
         <!-- lower area of sidebar-->
         <div class="lowerArea">
             <hr>
-            <h4>Conservation Status</h4>
+            <h4 class = "sidebarTitle">Conservation Status</h4>
             <hr>
             <p><span class="dot" id="dot1"></span>Not Threatened</p>
             <p><span class="dot" id="dot2"></span>Naturally Uncommon</p>
@@ -118,21 +118,13 @@
             <p id="status-link">Conservation status from <a
                     href="https://www.doc.govt.nz/nature/conservation-status/">DOC website</a>.</p>
         </div>
-
-
     </div>
 
-    <!-- main area-->
+    <!-- main area, where bird cards will be displayed-->
     <div class="main" id="myMain">
-
-        <!-- <div id = "bird1">
-                
-            </div> -->
-
-
-
     </div>
     
+
 </main>
 
 <footer>

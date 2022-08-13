@@ -1,589 +1,857 @@
-@media only screen and (min-device-width: 600px){
-* {
-    margin: 0vh 0vw 0vh 0vw;
-    font-family: "Lucida Console", "Courier New", monospace;
-    font-weight: lighter;
-
-}
-
-h3 {
-    font-size: 2.5vmin;
-}
-
-header {
-    background-color: rgb(16, 16, 170);
-    width: 100%;
-
-    height: 6vh;
-    
-
-
-
-}
-
-header img {
-    margin: 1vh 1vw 1vh 1vw;
-    width: auto;
-    height: 65%;
-    float: left;
-}
-
-#header-title {
-    vertical-align: middle;
-    /* float: right; */
-    /* text-align: left; */
-    /* padding: 2vh 1vw 2vh 1vw; */
-    color: white;
-    font-family: "Lucida Console", "Courier New", monospace;
-    font-weight: lighter;
-    
-    /* width: 98vw; */
-    
-    height: 6vh;
-    line-height: 6.5vh;
-    font-size: 1.5vw;
-}
-.searchArea{
-   
-}
-
-.searchArea p {
-    font-size: 1.0vw;
-    margin: 0.5vh 0vw 0.5vh 0vw;
-    font-weight:normal;
-    width: 90%;
-    
-}
-
-
-
-#filter-title {
-    margin: 0.5vh 0vw 0.5vh 0vw;
-    width: 90%;
-    text-align: center;
-    color: rgb(16, 16, 170);
-    font-weight: bold !important;
-    font-size: 1.5vw;
-
-}
-
-#search-title {
-    margin: 0.5vh 0vw 0.5vh 0vw;
-    width: 90%;
-    
-}
-
-#searchbar {
-    width: 85%;
-
-    margin-left: 5%;
-    height: 1.5vh;
-}
-
-.sidebar {
-    background-color: grey;
-    width: 14%;
-    float: left;
-    top: 11.5%;
-    /* height: 81.8%; */
-    height: 83vh;
-    position: fixed;
-    padding: 0.5% 0.5% 0.5% 0.5%;
-    border-style: outset;
-    
-}
-
-
-
-footer {
-    background-color: grey;
-    width: 99.7%;
-    height: 3.5vh;
-    bottom: 0;
-    position: fixed;
-    border-style: outset;
-    
-}
-
-footer p {
-    /* padding-top: 1vmin;
-    padding-bottom: 1vmin; */
-    text-align: center;
-    font-size: 1.3vmin;
-    color: rgb(0, 0, 0);
-    height: 3.5vh;
-    line-height: 3.5vh;
-}
-
-.conservation-status-dropdown {
-    display: inline-block;
-    position: relative;
-    
-    border-style: outset;
-    
-    border-width: medium;
-    width: 85%;
-    margin-left: 5%;
-    height: 1.5vh;
-    font-size: 1.5vw;
-    vertical-align: middle;
-    padding: 0.5vh 0.5vw 0.5vh 0.5vw;
-
-
-}
-
-.CS-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    padding: 12px 16px;
-    z-index: 1;
-
-}
-
-.dropdown-content p:hover {
-    background-color: rgb(206, 206, 206);
-
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-
-}
-
-.dropdown {
-    
-    background-color: rgb(165, 165, 165) !important;
-    color: rgb(0, 0, 0);
-
-    font-size: 1.5vw;
-    border: outset !important;
-    padding: 0.5vmin 1vmin 0.5vmin 1vmin;
-    width: 85%;
-    cursor: pointer;
-    margin: 0vmin 1vmin 0vmin 1vmin;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-
-    width: 85%;
-    margin: 0vmin 1vmin 0vmin 1vmin;
-    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
-    padding: 0.5vmin 1vmin 0.5vmin 1vmin;
-    z-index: 1;
-}
-
-/* .dropdown:hover .dropdown-content, .dropdown:focus{
-    display: block;
-    background-color: #ffffff;
-    
-} */
-
-.dropdown-content p:hover {
-    background-color: rgb(230, 230, 230);
-
-}
-
-#SB-button,
-#CS-button {
-    background-color: grey;
-    color: rgb(0, 0, 0);
-
-    font-size: 1.5vmin;
-    border: none;
-    padding: 0.5vmin 1vmin 0.5vmin 1vmin;
-    width: 87%;
-    cursor: pointer;
-    margin: 0vmin 5% 0vmin 5%;
-    font-size: 0.7vw;
-}
-
-
-
-
-.dot {
-    height: 1.5vmin;
-    width: 1.5vmin;
-    border-radius: 50vw;
-    display: inline-block;
-   
-    margin-right: 0.5vw;
-
-}
-
-#dot1 {
-    background-color: #02a028;
-}
-
-#dot2 {
-    background-color: #649a31;
-}
-
-#dot3 {
-    background-color: #99cb68;
-}
-
-#dot4 {
-    background-color: #fecc33;
-}
-
-#dot5 {
-    background-color: #fe9a01;
-}
-
-#dot6 {
-    background-color: #c26967;
-}
-
-#dot7 {
-    background-color: #9b0000;
-}
-
-#dot8 {
-    background-color: #660032;
-}
-
-#dot9 {
-    background-color: #320033;
-}
-
-#dot10 {
-    background-color: black;
-}
-
-#dot11 {
-    background-color: black;
-}
-
-#status-link {
-    font-size: 0.58vw;
-    padding: 0.5vh 0vw 0.5vh 0vw;
-}
-
-#search-button {
-    left: 23%;
-    background-color: rgb(165, 165, 165) !important;
-    position: relative;
-    width: 50%;
-    border-style: outset;
-    border-color: grey;
-    border-width: medium;
-
-    font-size: 1.0vw;
-    vertical-align: middle;
-
-}
-
-.search-number {
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    font-size: 1.3vmin !important;
-}
-.lowerArea{
-    height: 45%;
-    
-    margin-top: 5%;
-}
-
-.lowerArea h4 {
-    font-size: 1.2vw;
-    max-width: 25vw;
-    margin-bottom: 1vh;
-}
-
-.lowerArea p {
-    font-size: 0.9vw;
-}
-
-
-.main {
-    background-color: rgb(165, 165, 165);
-    width: 84.5%;
-    float: right;
-    height: 84.0%;
-    position: fixed;
-    top: 11.5%;
-    left: 15.3%;
-    overflow-y: scroll;
-    overflow-x: none;
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: flex-start;  */
-    justify-content: space-evenly;
-    border-style: inset !important;
-}
-.cardBorder{
-    border-style: outset;
-    height: 27vw !important;
-    width: 18vw !important;
-     margin: 1.8% 0% 0% 0% !important; 
-    padding:0.5%  !important;
-    /* background-color: rgb(16, 16, 170) !important; */
-    border-color: rgba(46, 46, 46, 0.452);
-    min-width: 300px;
-    min-height: 450px;
-    position: relative;
-    
-}
-
-.birdCard {
-    background-color: grey;
-    top: 1% !important;
-    left: 1% !important;
-    height: 97% !important;
-    width: 96.5% !important;
-    margin: 0% !important;
-    padding: 0 !important;
-    position: absolute;
-    border-style: inset;
-    border-color: rgba(27, 27, 27, 0.527);
-    
-    /* padding: 1vmin 1vmin 1vmin 1vmin; */
-    
-    
-
-}
-
-#bird {
-    background-color: white;
-    height: 50%;
-    width: 36%;
-    /* margin: 5%; */
-    position: absolute;
-}
-.credits{
-    font-size: xx-small;
-    right: 1%;
-    bottom: 1.5%;
-    position: absolute;
+/*
+    there are two main options in this file and the CSS 
+    depends on what sized device the user is viewing the 
+    website on.
+*/
+
+/* 
+CSS for the website on a device with a larger width than 600px(i.e. laptop/
+pc/ tablet). 
+*/
+@media only screen and (min-device-width: 600px) {
+    * {
+        margin: 0vh 0vw 0vh 0vw;
+        font-family: "Lucida Console", "Courier New", monospace;
+        font-weight: lighter;
+    }
+
+    header {
+        background-color: rgb(16, 16, 170);
+
+        width: 100%;
+        height: 6vh;
+    }
+
+    header img {
+        margin: 1vh 1vw 1vh 1vw;
+        width: auto;
+        height: 65%;
+        float: left;
+    }
+
+    #header-title {
+        vertical-align: middle;
+        color: white;
+        height: 6vh;
+        line-height: 6.5vh;
+        font-size: 3.5vh;
+    }
+
+    #topbar {
+        height: 5vh;
+        font-size: 1vmin;
+        display: flex;
+        background-color: grey;
+        border-style: outset;
+    }
+
+    #home {
+        border-right-style: outset;
+        width: 10%;
+    }
+
+    #home-button {
+        background-color: transparent;
+        border-style: none;
+        font-size: 2.5vmin;
+        width: 100%;
+        height: 100%;
+    }
+
+    .website {
+        background-color: rgb(255, 255, 255);
+        width: 82%;
+        display: flex;
+    }
+
+    .website h1 {
+        width: 97%;
+        height: 5vh;
+        line-height: 4.9vh;
+        font-size: 2.5vh;
+        padding-left: 1vw;
+    }
+
+    #website_icon {
+        background-color: white;
+        padding: 0.5vh 0.5vw 0.5vh 0.5vw;
+        height: 60%;
+        padding-top: 0.8vh;
+    }
+
+    .date {
+        width: 12%;
+        border-left-style: outset;
+    }
+
+    #today {
+        font-size: small;
+        height: 5vh;
+        padding-top: 1.5vmin;
+        text-align: center;
+    }
+
+    .sidebar {
+        background-color: grey;
+        width: 14%;
+        float: left;
+        top: 11.5%;
+        height: 83vh;
+        position: fixed;
+        padding: 0.5% 0.5% 0.5% 0.5%;
+        border-style: outset;
+        overflow-y: scroll;
+        overflow-x: none;
+        min-width: 200px;
+    }
+
+    .sidebar hr {
+        /* sidebar divider */
+        margin: 5% 0% 5% 0%;
+        border-color: rgb(77, 77, 77);
+        border-style: inset !important;
+    }
+
+    .lighter {
+        border-color: rgb(185, 185, 185) !important;
+    }
+
+    #filter-title {
+        margin: 0.5vh 0vw 0.5vh 4%;
+        width: 90%;
+        text-align: center;
+        color: rgb(16, 16, 170);
+        font-weight: bold !important;
+        font-size: larger;
+    }
+
+    .sidebarTitle {
+        font-size: medium;
+        font-weight: bold;
+        padding: 2% 0% 2% 0% !important;
+    }
+
+    #searchbar {
+        width: 85%;
+        margin-left: 5%;
+        height: 5%;
+    }
+
+    .dropdown {
+        background-color: rgb(165, 165, 165) !important;
+        color: rgb(0, 0, 0);
+        border: none;
+        padding: 0.5vmin 1vmin 0.5vmin 1vmin;
+        border: outset !important;
+        width: 90%;
+        cursor: pointer;
+        margin: 1vh 5% 0vmin 5%;
+        font-size: small;
+    }
+
+    #search-button {
+        left: 5%;
+        background-color: rgb(16, 16, 170) !important;
+        color: white;
+        position: relative;
+        width: 90%;
+        height: 4vh;
+        border-style: outset;
+        border-color: rgba(2, 2, 29, 0.492);
+        border-width: medium;
+        font-size: medium;
+        font-weight: bolder;
+    }
+
+    #searchNumber {
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        font-size: x-small;
+    }
+
+    .lowerArea {
+        height: 45%;
+        margin-top: 5%;
+    }
+
+    .lowerArea p {
+        font-size: small;
+    }
+
+    .dot {
+        height: 1.5vmin;
+        width: 1.5vmin;
+        border-radius: 50vw;
+        display: inline-block;
+        margin-right: 0.5vw;
+        min-width: 12px;
+        min-height: 12px;
+    }
+
+    #dot1 {
+        background-color: #02a028;
+    }
+
+    #dot2 {
+        background-color: #649a31;
+    }
+
+    #dot3 {
+        background-color: #99cb68;
+    }
+
+    #dot4 {
+        background-color: #fecc33;
+    }
+
+    #dot5 {
+        background-color: #fe9a01;
+    }
+
+    #dot6 {
+        background-color: #c26967;
+    }
+
+    #dot7 {
+        background-color: #9b0000;
+    }
+
+    #dot8 {
+        background-color: #660032;
+    }
+
+    #dot9 {
+        background-color: #320033;
+    }
+
+    #dot10,
+    #dot11 {
+        background-color: black;
+    }
+
+    #status-link {
+        font-size: xx-small;
+        height: 8vh;
+        padding: 0.5vh 0vw 0.5vh 0vw;
+    }
+
+    .main {
+        background-color: rgb(165, 165, 165);
+        width: 84.5%;
+        float: right;
+        height: 84.0%;
+        position: fixed;
+        top: 11.5%;
+        left: 15.3%;
+        overflow-y: scroll;
+        overflow-x: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        border-style: inset !important;
+    }
+
+    footer {
+        background-color: grey;
+        width: 99.7%;
+        height: 2.5vh;
+        bottom: 0;
+        position: fixed;
+        border-style: outset;
+        text-align: center;
+        padding-top: 1vh;
+        font-size: 1.7vmin;
+        color: rgb(0, 0, 0);
+    }
+
+    /*
+    bird card CSS below
+    */
+    .cardBorder {
+        border-style: outset;
+        height: 22vw !important;
+        max-height: calc(50vh);
+        width: 10vw !important;
+        margin-top: 1vw;
+        padding: 0.5% !important;
+        border-color: rgba(46, 46, 46, 0.452);
+        min-width: 300px;
+        min-height: 450px;
+        position: relative;
+    }
+
+    .birdCard {
+        background-color: grey;
+        top: 1% !important;
+        left: 1% !important;
+        height: 97% !important;
+        width: 96.5% !important;
+        margin: 0% !important;
+        padding: 0 !important;
+        position: absolute;
+        border-style: inset;
+        border-color: rgba(27, 27, 27, 0.527);
+    }
+
+    #bird {
+        background-color: white;
+        height: 50%;
+        width: 36%;
+        position: absolute;
+    }
+
+    .credits {
+        font-size: xx-small;
+        right: 1%;
+        bottom: 1.5%;
+        position: absolute;
+    }
+
+    .birdPhoto {
+        object-fit: cover;
+        top: 7%;
+        height: 45%;
+        width: 90%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        border-style: inset;
+        border-width: thick;
+    }
+
+    .topInfo {
+        position: absolute;
+        top: 1.5% !important;
+        left: 2%;
+        width: 90% !important;
+        height: 5vmin;
+    }
+
+    .topInfo h2 {
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: large;
+    }
+
+    .bottomInfo {
+        position: absolute !important;
+        width: 99% !important;
+        margin: 0 0 0 0 !important;
+        bottom: 0vh !important;
+        height: 45% !important;
+        font-size: 1.8vmin;
+        padding: 0.5%;
+    }
+
+    .cardHR {
+        margin: 2%;
+        border-color: rgb(161, 161, 161) !important;
+    }
+
+    .bottomInfo h2 {
+        text-align: center;
+        font-size: medium;
+        width: 100%;
+        font-weight: bold;
+    }
+
+    .gridInfo {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        width: 98% !important;
+        height: 80% !important;
+        grid-template-rows: 22% 17% 17% 17% 14% 14%;
+        margin-left: 0.2vw;
+        font-size: small;
+    }
+
+    .gridInfo p {
+        text-align: left;
+    }
+
+    #ordButton,
+    #famButton {
+        background-color: transparent;
+        border-style: none;
+        text-align: left;
+        height: 100%;
+        vertical-align: top;
+        padding-left: 0;
+        padding-top: 0;
+        padding-bottom: 10%;
+        font-size: small;
+    }
+
+    .right {
+        margin-left: 0.5vw;
+    }
+
+    .gridInfo .bold {
+        font-weight: bold;
+        text-align: right !important;
+    }
+
+
+    /*
+    For when sidebar has reached minimum size.
+    stops .main from starting left at 14% and changes 
+    it to be based off of pixels instead.
+    */
+    @media only screen and (max-width: 1415px) {
+
+        main {
+            max-width: 1210px;
+            position: relative;
+            display: table;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 201px;
+        }
+
+        .main {
+            float: right;
+            padding-left: calc(30px * 2vw);
+            padding-right: (30px * 2vw);
+            width: calc(100% - (210px + 1%));
+            left: calc(207px + 1%);
+            justify-content: space-evenly;
+        }
+
+        .cardBorder {
+            min-width: 300px;
+            min-height: 450px;
+            margin: 1vw 1vw 1vw 2vw;
+        }
+    }
+
+    /*
+        For when bird card needs to stop moving left 
+        (to the center) and stay in the same position 
+        while the window gets smaller.
+    */
+    @media only screen and (max-width: 555px) {
+        main {
+            max-width: 355px;
+        }
+
+        .main {
+            justify-content: left;
+        }
+    }
+
 }
 
 /*
-bird cards
+CSS for the website if veiwing from a device whose width is less than 
+600px (i.e. a mobile phone).
 */
-.main div {
-    /* position: relative; */
-    
-}
+@media only screen and (max-device-width: 600px) {
 
-/*
-image are all the same size
-ratio is,
-*/
-.birdPhoto {
+    html,
+    body,
+    footer,
+    main {
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow-y: hidden;
+    }
 
-    object-fit: cover;
-    top: 7%;
-    height: 50%;
-    width: 90%;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    border-style: inset;
-    border-width:thick;
+    * {
+        font-family: "Lucida Console", "Courier New", monospace;
+        font-weight: lighter;
+        border-style: none;
+    }
+
+    main {
+        background-color: rgb(195, 195, 195) !important;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 87vh;
+    }
+
+    .main {
+        justify-content: space-evenly;
+        display: flex;
+        flex-wrap: wrap;
+        position: fixed;
+        overflow-x: hidden;
+        height: 87vh;
+        overflow-y: scroll !important;
+    }
+
+    footer {
+        height: 5vh;
+        width: 100%;
+        bottom: 0;
+        background-color: blue;
+        margin: 0;
+        padding: 0;
+    }
+
+    footer * {
+        text-align: center;
+        font-size: small;
+        color: white;
+        margin: 0 !important;
+        padding: 0.5vh 1vw 0.5vh 1vw !important;
+        height: 2vh;
+        width: 100vw;
+        line-height: 2vh;
+    }
+
+    .sidebarButton {
+        background-color: transparent !important;
+        border: none;
+        color: black;
+        height: 3vh;
+        width: 7vw;
+        line-height: 3vh;
+        font-size: 3.5vw;
+        border-right-style: groove;
+    }
+
+    #topbar {
+        height: 3vh !important;
+        width: 99%;
+        margin: 0 !important;
+        display: flex;
+        border-style: groove;
+        background-color: grey !important;
+    }
+
+    header {
+        display: flex;
+        height: 5vh;
+        width: 100%;
+        margin: 0 !important;
+        background-color: rgb(16, 16, 170);
+    }
+
+    header h1 {
+        color: white;
+        height: 5vh;
+        line-height: 2.5vh;
+        font-size: 2vh;
+    }
+
+    header img {
+        height: 2.5vh;
+        padding: 1.3vh 1vh 1vh 1vh;
+    }
+
+    #home {
+        height: 3vh;
+        width: 10vw;
+        display: flex;
+        border-right-style: groove;
+    }
+
+    #home-button {
+        height: 2vh;
+        line-height: 2.7vh;
+        font-size: 3.0vw;
+        background-color: transparent !important;
+        padding-left: 0.8vw;
+    }
+
+    .website {
+        width: 63vw;
+        height: 3vh;
+        background-color: white;
+        display: flex;
+    }
+
+    .website h1 {
+        height: 2vh;
+        width: 75vw;
+        line-height: 1vh;
+        padding-left: 1vw;
+        font-size: 1.5vh;
+    }
+
+    #website_icon {
+        height: 2vh;
+        padding: 0.5vh 0.5vw 0.5vh 0.5vw;
+        border-right-style: groove;
+    }
+
+    .date {
+        width: 16vw;
+    }
+
+    #today {
+        height: 2vh;
+        width: 16vw;
+        line-height: 1.5vh;
+        padding-left: 1.5vw;
+        font-size: 2.5vw;
+    }
+
+    .sidebar {
+        padding: 5%;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        display: none;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    .cardBorder {
+        border-style: outset;
+        height: 72vh;
+        border-color: rgba(46, 46, 46, 0.452);
+        width: 90vw;
+        margin: 4vw 4vw 4vw 4vw;
+        position: relative;
+        padding: 0 !important;
+    }
+
+    .birdCard {
+        background-color: grey;
+        top: 1vw;
+        left: 1vw;
+        height: 70.5vh;
+        width: 87vw;
+        position: absolute;
+        border-style: inset;
+        border-color: rgba(27, 27, 27, 0.527);
+        margin: 0% !important;
+        padding: 0 !important;
+    }
+
+    #bird {
+        background-color: white;
+        height: 50%;
+        width: 36%;
+        position: absolute;
+    }
+
+    .credits {
+        font-size: smaller;
+        right: 1vw;
+        top: 75%;
+        padding-bottom: 1%;
+        height: 7%;
+        position: absolute;
+    }
+
+    .birdPhoto {
+        object-fit: cover;
+        top: 7%;
+        height: 40%;
+        width: 85%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        border-style: inset;
+        border-width: thick;
+    }
+
+    .topInfo {
+        position: absolute;
+        top: 0vh !important;
+        left: 4%;
+        width: 98% !important;
+        height: 5vh;
+    }
+
+    .topInfo h2 {
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 6vw;
+        line-height: 1vw;
+    }
+
+    .bottomInfo {
+        position: relative !important;
+        width: 95% !important;
+        margin: 0 0 0 0 !important;
+        top: 40vh !important;
+        height: 48% !important;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+
+    .cardHR {
+        margin: 1vh 0vw 1vh 0vw;
+        border-style: inset;
+        border-color: rgb(0, 0, 0) !important;
+    }
+
+    .bottomInfo h2 {
+        margin: 0 !important;
+        font-size: larger;
+        padding: 0;
+        left: 0;
+        width: 100%;
+        height: 3vh;
+        position: absolute;
+        top: -15%;
+        left: 50%;
+        transform: translate(-50%, -10%);
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .gridInfo {
+        display: grid;
+        grid-template-columns: 35% 65%;
+        width: 95% !important;
+        height: 26vh !important;
+        bottom: 0;
+        grid-template-rows: 6vh 3.5vh 3.5vh 6vh 3.5vh 3vh;
+        margin: 0vh 0vw 0vh 0vw !important;
+        padding: 0 !important;
+    }
+
+    .gridInfo p {
+        margin: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        padding-left: 3vw !important;
+        font-size: 4.7vw;
+        height: 3.9vh;
+        width: 52vw;
+        line-height: 3vh;
+        text-align: left;
+    }
+
+    .gridInfo .bold {
+        height: 6.0vh;
+        max-width: 27vw !important;
+        font-size: 2vh !important;
+        font-weight: bold !important;
+        padding: 0 !important;
+        text-align: right !important;
+    }
+
+    #filter-title {
+        margin: 1vw 0% 1vw 0%;
+        font-weight: bold;
+        width: 100%;
+        font-size: 8vw;
+    }
+
+    .sidebar hr {
+        margin: 2% 0% 2% 0%;
+        border-color: rgb(77, 77, 77);
+        width: 100%;
+        border-style: inset !important;
+    }
+
+    .lighter {
+        border-color: rgb(185, 185, 185) !important;
+    }
+
+    .searchArea {
+        margin: 0.5vh 0vw 0.5vh 0vw;
+    }
+
+    .sidebarTitle {
+        font-size: 5vw;
+        padding: 0;
+        margin: 1vw 0vw 1vw 0vw;
+    }
+
+    #searchbar {
+        width: 99%;
+        height: 3vh;
+    }
+
+    .dropdown {
+        background-color: rgb(165, 165, 165) !important;
+        color: rgb(0, 0, 0);
+        font-size: medium;
+        height: 4vh;
+        border: outset !important;
+        padding: 0.5vmin 1vmin 0.5vmin 1vmin;
+        width: 100%;
+        cursor: pointer;
+        margin: 0vmin 1vmin 0vmin 1vmin;
+    }
 
 
-}
+    .dot {
+        height: 4vw;
+        width: 4vw;
+        border-radius: 50vw;
+        display: inline-block;
+        margin-right: 0.5vw;
+    }
 
-.topInfo {
-    background-color: rgba(128, 128, 128, 0) !important;
-    position: absolute;
-    top: 1.5% !important;
-    left: 2%;
-    width: 90% !important;
-    height: 5vmin;
-    font-size: 0.9vw;
-    
+    #dot1 {
+        background-color: #02a028;
+    }
 
-}
+    #dot2 {
+        background-color: #649a31;
+    }
 
-/* .topInfo p {
-    color: rgb(0, 0, 0);
-    font-size: smaller;
+    #dot3 {
+        background-color: #99cb68;
+    }
 
-} */
+    #dot4 {
+        background-color: #fecc33;
+    }
 
-.topInfo h2 {
-    color: rgb(0, 0, 0);
-    font-weight: bold ;
-}
+    #dot5 {
+        background-color: #fe9a01;
+    }
 
-.bottomInfo {
-    position: absolute !important;
-    width: 99% !important;
-    
-    margin: 0 0 0 0 !important;
-    bottom: 0vh !important;
-    height: 40% !important;
-    font-size: 1.8vmin;
-    padding: 0.5%;
-    /* font-weight: 30%; */
+    #dot6 {
+        background-color: #c26967;
+    }
 
-}
-.cardHR{
-    margin: 2%;
-    border-color: rgb(161, 161, 161) !important;
-}
+    #dot7 {
+        background-color: #9b0000;
+    }
 
-.bottomInfo h2 {
-    padding: 0.5vh 0vw 0vh 0.0vw;
-    text-align: center;
-    font-size: 93%;
-    width: 100%;
-    font-weight: bold;
-    
-}
+    #dot8 {
+        background-color: #660032;
+    }
 
-.gridInfo {
-    
-    display: grid;
-    grid-template-columns: 30% 70%;
-    width: 98% !important;
-    height: 75% !important;
-    grid-template-rows: 25% 20% 17% 15% 15% 15%;
-    margin-left: 0.2vw;
-    
+    #dot9 {
+        background-color: #320033;
+    }
 
-}
+    #dot10 {
+        background-color: black;
+    }
 
-.gridInfo p {
-    font-size: 80%;
-    
-    text-align: left;
-    /* padding: 0vmin 0.5vmin 0vmin 0.5vmin; */
+    #dot11 {
+        background-color: black;
+    }
 
-}
-#right{
-    margin-left: 0.5vw !important;
-    
-}
+    #status-link {
+        font-size: 4vw;
+        padding: 0.5vh 0vw 4vh 0vw;
+    }
 
-.gridInfo #bold {
-    font-weight: bold;
-    font-size:80%;
-   
-    text-align: right !important;
-    
-}
+    #search-button {
+        background-color: rgb(107, 107, 107) !important;
+        width: 100%;
+        height: 5vh;
+        border-style: outset;
+        border-color: rgba(69, 69, 69, 0.512);
+        border-width: medium;
+        font-size: 4.5vw;
+        vertical-align: middle;
+    }
 
-.circle {
-    height: 3.5vmin;
-    width: 3.5vmin;
-    /* border-radius: 5%; */
-    border-width: 5%;
-    border-style: solid;
-    border-color: white;
-    display: inline-block;
-    margin-left: 1vw;
-    margin-right: 1vw;
-    position: absolute;
-    background-color: #02a028;
-    bottom: 35.5%;
-    right: 4.1%;
-    border-radius: 2vmin;
+    .lowerArea h4 {
+        font-size: 7vw;
+        font-weight: bold;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 1vh;
+    }
 
-
-}
-
-/* .circleBorder {
-    height: 4vmin;
-    width: 4vmin;
-    border-radius: 50vw;
-    display: inline-block;
-    margin-left: 1vw;
-    margin-right: 1vw;
-    position:  absolute;
-    background-color: rgb(255, 255, 255) !important;
-    bottom: 35.8%; 
-    right: 3.3%;
-    border-radius: 2vmin;
-    
-    
-} */
-
-.topbar {
-    height: 5vh;
-    font-size: 1vmin;
-    display: flex;
-    background-color: grey;
-    border-style: outset;
-}
-
-.arrows {
-    /* padding-left: 1vw;
-    padding-right: 1vw; */
-
-    border-right-style: outset;
-    
-    
-    width: 6%;
-    /* display: flex; */
-
-}
-
-.arrows h1{
-    
-    height: 5vh;
-    
-    width: 100%;
-    padding: 0.8vh 0vw 0.8vh 0vw;
-    font-size: 2vw;
-    
-    /* padding-right: 15%; */
-    text-align: center;
-
-}
-
-
-
-.website {
-    background-color: rgb(255, 255, 255);
-    width: 87%;
-    display: flex;
-    
-
-}
-.website h1{
-    width: 97%;
-    height: 5vh;
-    line-height: 4.9vh;
-    
-    padding-left: 1vw;
-}
-
-.page_icon {
-    background-color: white;
-    padding: 0.5vh 0.5vw 0.5vh 0.5vw;
-    height: 60%;
-    padding-top: 0.8vh;
-
-}
-.date{
-    width:7%;
-    
-    border-left-style: outset;
-}
-#today {
-    font-size: 1.0vw;
-    height: 5vh;
-    line-height: 4.9vh;
-    text-align: center;
-    
-}
-.sidebar hr{
-
-    margin: 5% 0% 5% 0%;
-    border-color: rgb(77, 77, 77);
-    border-style: inset !important;
-    /* border-style: groove; */
-}
-#lighter, #lighter2{
-    border-color: rgb(185, 185, 185) !important;
-}
-
+    .lowerArea p {
+        font-size: 5vw;
+    }
 }

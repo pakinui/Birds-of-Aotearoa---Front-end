@@ -1,259 +1,295 @@
-//birds json file
+/*
+    JavaScript for if the user is on a device with a screen width 
+    larger than 600px. 
+    i.e. a computer, tablet
+*/
+
 const birdFile = "data/nzbird.json";
+let jsonData; // inital json file bird array
+/*
+    array of colours and which conservation status they represent
+*/
+const colours = [['Not Threatened', '#02a028'], ['Naturally Uncommon', '#649a31'],
+['Relict', '#99cb68'], ['Recovering', '#fecc33'], ['Declining', '#fe9a01'],
+['Nationally Increasing', '#c26967'], ['Nationally Vulnerable', '#9b0000'],
+['Nationally Endangered', '#660032'], ['Nationally Critical', '#320033'],
+['Extinct', '#000000'], ['Data Deficient', '#000000']];
 
-let jsonData;
+startDesktopWebsite();
 
-//console.log('hi?');
-//tests();
-getJSON();
+/*
+    function to start the Bird of Aotearoa 
+    website
+*/
+async function startDesktopWebsite() {
 
-
-async function tests() {
-
-    let card = document.createElement('div');
-    card.setAttribute('class', 'birdCard');
-    //console.log('reach');
-
-    let card2 = document.getElementById('bird1');
-    let string = card2.textContent;
-    //console.log(string); //works
-    card2.textContent = "changes text content"; //works
-
-    let parent = document.getElementById('bird1');
-    let child = document.createElement('p');
-    child.textContent = "new text - add child to parent";
-    parent.append(child); //works
-
-
-}
-
-
-//to read JSON file and put into an array?
-async function getJSON() {
-    //console.log('starting to get JSON');
     let response = await fetch(birdFile);
     let data = await response.text();
-    jsonData = JSON.parse(data);
-    //console.log(jsonData[0].primary_name);//WORKS
-    //console.log(jsonData.length);//68
+    jsonData = JSON.parse(data); // jsonData array if filled with bird info now
 
-    //firstBirdCard(0);
+    //print each bird card in jsonData
     for (let i = 0; i < jsonData.length; i++) {
-        //birdCards(i);
         printCards(jsonData, i);
-        //console.log(i);
     }
-
-
 }
 
+/*
+    give the home button a function when clicked.
+    will return to the main screen of all 68 bird 
+    cards and scroll back to the top.
+*/
+let homeButton = document.getElementById('home');
+homeButton.addEventListener('click', function () {
 
-//work on search feature
-async function searchButton() {
+    reloadBirds();
+    printing(jsonData);//print all 68 original bird cards
+    scrollToTop();
+});
 
-}
-
+/* 
+    function to search the text that the user inputs.
+    uses normalize function to cater towards comparing 
+    unicode and special characters.
+    this means if someone searches for 'Kaki' the bird 
+    'Kakī' will match the search and vice versa.
+*/
+/*
+    i have excluded 'other_names' from the json file in 
+    the search results initally.
+    this is because i have not listed each birds other names 
+    on their card and if i were to search 'south' for example, 
+    many bird match the search whose other names include south 
+    but not any of the names on the card which can be confusing 
+    to look at.
+*/
+/*
+    code for including 'other_names' in the search is commented 
+    out but can be included.
+*/
 function searchNames(searchArray, input) {
-    let contains = new Array();
+    let contains = new Array(); // array which will be filled with birds who match search
     let find = input.normalize("NFC");
-    // console.log('search length: ' + searchArray.length);
     for (let i = 0; i < searchArray.length; i++) {
         let bird = searchArray[i];
+
         let names = '';
+        //concat names (excluding 'other_names')
         names = names.concat(bird.primary_name.toLowerCase() + ' ' + bird.english_name.toLowerCase() + ' ' + bird.scientific_name.toLowerCase() + ' ' + bird.order.toLowerCase() + ' ' + bird.family.toLowerCase());
-        for (let y = 0; y < bird.other_names.length; y++) {
-            names = names.concat(' ' + bird.other_names[y].toLowerCase());
-        }
 
-        if (bird.primary_name == "Kak\u012b") {
-            console.log(names);
-            console.log('input: ' + input);
-            let n = names.normalize("NFD").replace(/[\u0300-\u036f]/g, '');
-            let p = input.normalize("NFD").replace(/[\u0300-\u036f]/g, '');
-            console.log(n);
-            console.log(p);
-            console.log(n.includes(p));
+        //to exclude 'other_names' (comment out for loop)
+        // for (let y = 0; y < bird.other_names.length; y++) {
+        //     names = names.concat(' ' + bird.other_names[y].toLowerCase());
+        // }
 
-        }
-        let n = names.normalize("NFD").replace(/[\u0300-\u036f]/g, '');
-        let p = input.normalize("NFD").replace(/[\u0300-\u036f]/g, '');
+        let name = names.normalize("NFD").replace(/[\u0300-\u036f]/g, '');
+        let text = input.normalize("NFD").replace(/[\u0300-\u036f]/g, '');
 
-
-        if (n.includes(p)) {
-            console.log(bird.name);
+        if (name.includes(text)) {
             contains[contains.length] = bird;
-
         }
     }
-    //console.log('returns length: ' + contains.length);
-    return contains;
+    return contains; // array of birds whose name(s) match the search
 }
 
-//filter button
-//class = 'search-button'
-function searchEvent(eventData) {
-    //console.log('filter button pressed');
-    let s = document.getElementById('SB-button');
-    let c = document.getElementById('CS-button');
-    //console.log(s.value + ', ' + c.value);
-    // reloadBirds(c, s);
+/*
+    function to be called when the family or order on 
+    a bird card is clicked.
+    displays (if any) other birds in that same 
+    family/order.
+*/
+function searchTaxonomy(string) {
     let data = new Array();
-    let dataCount = 0;
+    for (let i = 0; i < jsonData.length; i++) {
+        if (jsonData[i].family == string || jsonData[i].order == string) {
+            data[data.length] = jsonData[i];
+        }
+    }
+    reloadBirds();
+    printing(data);
+}
 
+/*
+    function which is called by a click on the filter results 
+    button in the sidebar.
+    this filters the birds so only matching birds will be 
+    presented on the screen.
+*/
+function searchEvent(eventData) {
+    eventData.preventDefault(); //prevents reload
+
+    let s = document.getElementById('SB-button');//sort by value
+    let c = document.getElementById('CS-button');//conservation status value
+
+    //arrays to help handle the filtering process
+    let data1 = new Array();
+    let data2 = new Array();
+
+    let dataCount = 0;//count to keep track of data2 length
     let search = document.getElementById('searchbar');
-    //console.log('searching: ' + search.value.toLowerCase());//works
     let searchFor = search.value.toLowerCase();
-    search.textContent = "";
+
+    /*
+        this if/else section handles the text search
+        it calls a method called 'searchNames' which 
+        finds and birds whose name(s) match the text 
+        provided by the user.
+    */
     if (searchFor == "") {
-        console.log('nothing to search');
-        data = Array.from(jsonData);
+        data1 = Array.from(jsonData);
     } else {
-        console.log('searching: ' + searchFor);
-        data = searchNames(Array.from(jsonData), searchFor);
-        //console.log('data length: ' + data.length);
+        data1 = searchNames(Array.from(jsonData), searchFor);
     }
 
-
-    //so the status before the sort by to first remove all the birds we dont want
+    /*
+        this if/else section handles the conservations 
+        status filter.
+    */
     if (c.value === "All") {
-        //data = Array.from(jsonData);
-
-    } else if (c.value == c.value) {
-        for (let i = 0; i < data.length; i++) {
-            //console.log(jsonData[i].status.value);
-            if (data[i].status == c.value) {
-                //console.log('not threatened');
-                data[dataCount] = data[i];
-                dataCount++;
+        data2 = Array.from(data1);
+    } else {
+        for (let i = 0; i < data1.length; i++) {
+            if (data1[i].status == c.value) {
+                data2[dataCount] = data1[i]; // if status matches then add to data2
+                console.log(data2[dataCount++].primary_name);
             }
         }
     }
 
-    //console.log(data.length);
-    //reloadBirds();
+    /*
+        this if/else section is in charge of the sort by 
+        button/options.
+    */
+    let finalBirds = new Array();
 
     if (s.value === "Lightest to Heaviest") {
-        //data = jsonData;
-        printing(data);
-        data.sort(function (a, b) { return a.size.weight.value - b.size.weight.value });
-        printing(data);
+        finalBirds = Array.from(data2.sort(function (a, b) { return a.size.weight.value - b.size.weight.value }));
+
     } else if (s.value === "Heaviest to Lightest") {
-        //data = jsonData;
-        data.sort(function (a, b) { return b.size.weight.value - a.size.weight.value });
-        printing(data);
+        finalBirds = Array.from(data2.sort(function (a, b) { return b.size.weight.value - a.size.weight.value }));
+
     } else if (s.value === "Common to Extinct") {
+        let dataCopy = Array.from(data2);
+        finalBirds = Array.from(com2Ext(dataCopy));
 
-        let dataCopy = Array.from(data);
-        let data2 = ext2Com(dataCopy);
-
-
-        printing(data2);
-    } else if (s.value == "Extinct to Common") {//if s.value = "Common to Extinct"
-        let dataCopy = Array.from(data);
-        let data2 = ext2Com(dataCopy).reverse();
-        printing(data2);
+    } else if (s.value == "Extinct to Common") {
+        let dataCopy = Array.from(data2);
+        finalBirds = Array.from(com2Ext(dataCopy).reverse());
 
     } else if (s.value == "Shortest to Tallest") {
-        data.sort(function (a, b) { return a.size.length.value - b.size.length.value });
-        printing(data);
-    } else {//s.value == "Tallest to Shortest"
-        
-        data.sort(function (a, b) { return b.size.length.value - a.size.length.value });
-        printing(data);
+        finalBirds = Array.from(data2.sort(function (a, b) { return a.size.length.value - b.size.length.value }));
+
+    } else if (s.value == "Tallest to Shortest") {
+        finalBirds = Array.from(data2.sort(function (a, b) { return b.size.length.value - a.size.length.value }));
+
+    } else if (s.value == "A to Z by Scientific name") {
+        finalBirds = Array.from(data2.sort(function (a, b) {
+            let x = a.scientific_name.toLowerCase();
+            let y = b.scientific_name.toLowerCase();
+            if (x < y) { return -1; }
+            if (x > y) { return 1; }
+            return 0;
+        }));
+
+    } else {//s.value = "Z to A by Scientific name"
+        finalBirds = Array.from(data2.sort(function (a, b) {
+            let x = a.scientific_name.toLowerCase();
+            let y = b.scientific_name.toLowerCase();
+            if (x > y) { return -1; }
+            if (x < y) { return 1; }
+            return 0;
+        }));;
     }
 
-    function comm2Exti(value, index, array) {
-        sortedData[sortedData.length] = value;
-    }
+    printing(finalBirds);
 
-
-
-
-
-    function printing(arr) {
-        //print whatever meets criteria
-        reloadBirds();
-        for (let i = 0; i < arr.length; i++) {
-            printCards(arr, i);
-        }
-
-        let found = document.getElementById('searchNumber');
-        let num = arr.length;
-        found.textContent = num + ' results found.';
-    }
-
-
+    //scroll back to the top to view results
+    scrollToTop();
 }
+
+/*
+    function to scroll back to the top of the page.
+    used when home button is clicked and when filter 
+    button for search is clicked.
+*/
+function scrollToTop() {
+    let m = document.getElementById('myMain');
+    m.scrollTop = 0;
+    m.scrollTop = 0;
+}
+
+/*
+    function to print an array of birds.
+    called from the searchEvent function and
+    listeners.
+*/
+function printing(arr) {
+
+    reloadBirds();
+    for (let i = 0; i < arr.length; i++) {
+        printCards(arr, i);
+    }
+    //change text to show how many results were found
+    let found = document.getElementById('searchNumber');
+    let num = arr.length;
+    found.textContent = num + ' results found.';
+}
+
+/*
+    add a listener to filter results button in sidebar
+    calls searchEvent function to filter through the 
+    birds and display any that match
+*/
 let button = document.querySelector("#search-button");
-//console.log(button.textContent);
-if (button) {
-    button.addEventListener('click', searchEvent);
-}
+button.addEventListener('click', searchEvent);
 
-
-
+/*
+    function to remove all current bird cards on the screen
+*/
 function reloadBirds() {
     let main = document.getElementById('myMain');
     main.innerHTML = '';
-
-
 }
 
+/*
+    function to print/create the bird card at the index in the 
+    array provided
+*/
 function printCards(array, count) {
     let main = document.getElementById('myMain');
     let card = document.createElement('div');
     let cardArea = document.createElement('div');
     cardArea.setAttribute('class', 'cardBorder');
-
     card.setAttribute('class', 'birdCard');
 
-    const colours = [['Not Threatened', '#02a028'], ['Naturally Uncommon', '#649a31'],
-    ['Relict', '#99cb68'], ['Recovering', '#fecc33'], ['Declining', '#fe9a01'],
-    ['Nationally Increasing', '#c26967'], ['Nationally Vulnerable', '#9b0000'],
-    ['Nationally Endangered', '#660032'], ['Nationally Critical', '#320033'],
-    ['Extinct', '#000000'], ['Data Deficient', '#000000']];
-
-    //let data = jsonData;
-    //let data = array;
-    //let bird = jsonData[count];
+    //select which bird this card will print
     let bird = array[count];
+
     //photo
     let photo = document.createElement('img'); //create img
     photo.setAttribute('class', 'birdPhoto');
-
     photo.src = bird.photo.source;
-    //console.log(photo.src); 
-    card.appendChild(photo);//works
+    card.appendChild(photo);// add photo to card
 
-
-    //information
+    //bird name
     let maori = array[count].primary_name;
     let topInfo = document.createElement('div');
     topInfo.setAttribute('class', 'topInfo');
     let title = document.createElement('h2');
     title.textContent = maori;
-    //console.log(title);
-    topInfo.appendChild(title);
+    topInfo.appendChild(title);// add primary name to div
+    card.appendChild(topInfo);//add div to card
 
-
-
-
-
-    card.appendChild(topInfo);//worked
 
     //bottom info
     let bottomInfo = document.createElement('div');
     bottomInfo.setAttribute('class', 'bottomInfo');
     let name = bird.english_name;
     let engName = document.createElement('h2');
-    engName.textContent = name; // could i make it = bird.english_name; ???
-    bottomInfo.appendChild(engName);
+    engName.textContent = name;
+    bottomInfo.appendChild(engName);//add english name to bottom info div
     let divide = document.createElement('hr');
     divide.setAttribute('class', 'cardHR');
-    bottomInfo.appendChild(divide);
-
-
-
+    bottomInfo.appendChild(divide);//add divide to bottom info div
 
     //grid of other info
 
@@ -261,150 +297,147 @@ function printCards(array, count) {
     let grid = document.createElement('div');
     grid.setAttribute('class', 'gridInfo');
     let sciBold = document.createElement('p');
-    sciBold.setAttribute('id', 'bold');
+    sciBold.setAttribute('class', 'bold');
     sciBold.textContent = 'Scientific name';
     grid.appendChild(sciBold);
     let sciName = document.createElement('p');
     sciName.textContent = bird.scientific_name;
-    sciName.setAttribute('id', 'right');
-    grid.appendChild(sciName);
+    sciName.setAttribute('class', 'right');
+    grid.appendChild(sciName);//add scientific info to grid
 
     //family
     let famBold = document.createElement('p');
-    famBold.setAttribute('id', 'bold');
+    famBold.setAttribute('class', 'bold');
     famBold.textContent = 'Family';
     grid.appendChild(famBold);
     let famName = document.createElement('p');
     famName.textContent = bird.family;
-    famName.setAttribute('id', 'right');
-    grid.appendChild(famName);
-
+    famName.setAttribute('class', 'right');
+    famName.setAttribute('id', 'famButton');
+    famName.addEventListener('click', function () { searchTaxonomy(bird.family) }); //add action listener
+    grid.appendChild(famName);//add family info to grid
 
     //order
     let ordBold = document.createElement('p');
-    ordBold.setAttribute('id', 'bold');
+    ordBold.setAttribute('class', 'bold');
     ordBold.textContent = 'Order';
     grid.appendChild(ordBold);
     let ordName = document.createElement('p');
     ordName.textContent = bird.order;
-    ordName.setAttribute('id', 'right');
-    grid.appendChild(ordName);
-
+    ordName.setAttribute('class', 'right');
+    ordName.setAttribute('id', 'ordButton');
+    ordName.addEventListener('click', function () { searchTaxonomy(bird.order) }); //add action listener
+    grid.appendChild(ordName);//add order info to grid
 
     //status
     let staBold = document.createElement('p');
-    staBold.setAttribute('id', 'bold');
+    staBold.setAttribute('class', 'bold');
     staBold.textContent = 'Status';
     grid.appendChild(staBold);
     let staName = document.createElement('p');
     staName.textContent = bird.status;
-    staName.setAttribute('id', 'right');
-    grid.appendChild(staName);
-
+    staName.setAttribute('class', 'right');
+    grid.appendChild(staName);//add conservation status info to grid
 
     //length
     let lenBold = document.createElement('p');
-    lenBold.setAttribute('id', 'bold');
+    lenBold.setAttribute('class', 'bold');
     lenBold.textContent = 'Length';
     grid.appendChild(lenBold);
     let lenName = document.createElement('p');
     lenName.textContent = bird.size.length.value + ' ' + bird.size.length.units;
-    lenName.setAttribute('id', 'right');
-    grid.appendChild(lenName);
+    lenName.setAttribute('class', 'right');
+    grid.appendChild(lenName);//add length info to grid
 
     //weight
     let weiBold = document.createElement('p');
-    weiBold.setAttribute('id', 'bold');
+    weiBold.setAttribute('class', 'bold');
     weiBold.textContent = 'Weight';
     grid.appendChild(weiBold);
     let weiName = document.createElement('p');
     weiName.textContent = bird.size.weight.value + ' ' + bird.size.weight.units;
-    weiName.setAttribute('id', 'right');
-    grid.appendChild(weiName);
+    weiName.setAttribute('class', 'right');
+    grid.appendChild(weiName);//add weight info to grid
 
+    bottomInfo.appendChild(grid);// add grid to bottom info div
 
-    bottomInfo.appendChild(grid);
-    card.appendChild(bottomInfo);
 
     let creditsDiv = document.createElement('div');
     let credits = document.createElement('p');
     creditsDiv.setAttribute('class', 'credits');
     credits.textContent = 'Photo by ' + bird.photo.credit;
     creditsDiv.appendChild(credits);
-    bottomInfo.appendChild(creditsDiv);
-    //need to add coloured circle
+    bottomInfo.appendChild(creditsDiv);//add photo credits to bottom info
 
-    //border for circle
+    card.appendChild(bottomInfo);//add bottom info div to card
 
-    let border = document.createElement('span');
-    border.setAttribute('class', 'circleBorder');
-    card.appendChild(border);
-
-    //think its a span i need to add with alil border?
-    let circle = document.createElement('span');
-    circle.setAttribute('class', 'circle');
-    //circle.setAttribute('id', 'circleColour');
-
-
+    //for loop to handle changing colours based on conservation status
     for (let i = 0; i < colours.length; i++) {
         let status = bird.status;
         let status2 = colours[i][0];
-        //let result = (status).localCompare(status2);
+
         if (status === status2) {
-            //circle.setAttribute('background-colour', colours[i][1]);
-            //let c = document.getElementById('circle');
             let col = colours[i][1];
-            circle.style.backgroundColor = col;
             cardArea.style.backgroundColor = col;
             card.style.borderColor = col;
             photo.style.borderColor = col;
-            //console.log(col);
         }
     }
-    // card.appendChild(circle);
+
+    //add bird card to border card
     cardArea.appendChild(card);
-
+    //add bird card to main
     main.appendChild(cardArea);
-
-
-
-
 }
 
+/*
+    function to sort birds in an array based on conservation status 
+    from common to extinct.
+    starts with an array of all not threated birds.
+    each increasing status gets concat onto the array.
+    uses the status from the 'colours' array to compare
+*/
+function com2Ext(array) {
 
-function ext2Com(array) {
-
-
-    let one = array.filter(d => d.status == 'Not Threatened');
-    let two = one.concat(array.filter(d => d.status == 'Naturally Uncommon'));
-    let three = two.concat(array.filter(d => d.status == 'Relict'));
-    let four = three.concat(array.filter(d => d.status == 'Recovering'));
-    let five = four.concat(array.filter(d => d.status == 'Declining'));
-    let six = five.concat(array.filter(d => d.status == 'Nationally Increasing'));
-    let seven = six.concat(array.filter(d => d.status == 'Nationally Vulnerable'));
-    let eight = seven.concat(array.filter(d => d.status == 'Nationally Endangered'));
-    let nine = eight.concat(array.filter(d => d.status == 'Nationally Critical'));
-    let ten = nine.concat(array.filter(d => d.status == 'Extinct'));
-    let eleven = ten.concat(array.filter(d => d.status == 'Data Deficient'));
-
-    //let data = Array.from(eleven);
-    //console.log(one.length);
-
-
-    return eleven;
+    let one = array.filter(d => d.status == colours[0][0]);
+    for (let i = 1; i < colours.length; i++){
+        one = one.concat(array.filter(d => d.status == colours[i][0]));
+    }
+     return one;
 }
 
+//date area in topbar
 let date = document.getElementById('today');
 let today = new Date();
-//console.log(today);
+//+1 to the month as the months are from 0-11
 let dayString = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
-if (date) {
-    date.textContent = dayString;
-}
+date.textContent = dayString;
 
 
-let display = navigator.userAgent;
-console.log(display);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

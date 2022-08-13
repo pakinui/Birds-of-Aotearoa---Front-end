@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en-nz">
+    <!-- icon.png was drawn by me - no need for copyright-->
 
 <head>
     <title>Birds of Aotearoa</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="desktop.css">
+    <link rel="stylesheet" href="BoA.css">
     <script>
-        
-        if (screen && screen.width < 600) {
+        /*
+            JavaScript to determine which .js file to use.
+            on google chrome if using inspect to view the mobile version you 
+            need to reload the page if switching between mobile and desktop 
+            for JS to change to new device.
+        */
+        if (screen && screen.width < 600) {//on mobile
             document.write('<script defer src="mobile.js" id = "script"><\/script>');
-           // document.write('<link rel="stylesheet"  media = "screen and (max-device-width: 600px)" href="desktop.css">');
-            console.log('mobile');
-        } else {
+        } else {// on laptop, pc, tablet, etc.
             document.write('<script defer src="desktop.js" id = "script"><\/script>');
-            
-            console.log('desktop');
         }
     </script>
 </head>
@@ -29,6 +31,7 @@
 <div id="topbar">
     <div id="home">
         <button id="home-button">home</button>
+        <button id ="likes">🤍</button>
     </div>
     <div class="website">
         <h1 id="webText">COSC 203 - Assignment One</h1>
@@ -44,9 +47,8 @@
 
 <main>
     
-
     <!-- sidebar -->
-    <div class="sidebar" id="mySidebar">
+    <aside class="sidebar" id="mySidebar">
         <div class="searchArea">
             <hr>
             <h3 id="filter-title">Filter Birds</h3>
@@ -77,18 +79,18 @@
 
                 <label for="SB-button" class="sidebarTitle">Sort by</label>
                 <select class="dropdown" id="SB-button">
-                    <option>A to Z by Scientific name</option>
-                    <option>Z to A by Scientific name</option>
                     <option>Lightest to Heaviest</option>
                     <option>Heaviest to Lightest</option>
-                    <option>Tallest to Shortest</option>
                     <option>Shortest to Tallest</option>
-                    <option>Extinct to Common</option>
+                    <option>Tallest to Shortest</option>
+                    <option>A to Z by Scientific name</option>
+                    <option>Z to A by Scientific name</option>
                     <option>Common to Extinct</option>
+                    <option>Extinct to Common</option>
+                    
                 </select>
 
                 <hr class="lighter" > 
-                <!-- dont know if i need the remMobilke thing check this-->
 
                 <input type="submit" value="Filter Results" id="search-button">
             </form>
@@ -99,7 +101,7 @@
         </div>
 
         <!-- lower area of sidebar-->
-        <div class="lowerArea">
+        <section class="lowerArea">
             <hr>
             <h4 class = "sidebarTitle">Conservation Status</h4>
             <hr>
@@ -117,8 +119,8 @@
             <hr>
             <p id="status-link">Conservation status from <a
                     href="https://www.doc.govt.nz/nature/conservation-status/">DOC website</a>.</p>
-        </div>
-    </div>
+            </section>
+    </aside>
 
     <!-- main area, where bird cards will be displayed-->
     <div class="main" id="myMain">

@@ -3,7 +3,7 @@
     smaller than 600px. 
     i.e. a mobile phone
 */
-const birdFile = "data/nzbird.json";
+const birdFile = "./data/nzbird.json";
 let jsonData; // inital json file bird array
 /*
     array of colours and which conservation status they represent
@@ -14,16 +14,25 @@ const colours = [['Not Threatened', '#02a028'], ['Naturally Uncommon', '#649a31'
 ['Nationally Endangered', '#660032'], ['Nationally Critical', '#320033'],
 ['Extinct', '#000000'], ['Data Deficient', '#000000']];
 
-startMobileWebsite();
+fetchData();
 
 /*
-    function to start the Bird of Aotearoa website
+    function to fetch data 
 */
-async function startMobileWebsite() {
-
-    let response = await fetch(birdFile);
-    let data = await response.text();
+async function fetchData(){
+    const resp = await fetch(birdFile);
+    if(!resp.ok){
+        console.error(resp.status);
+    }
+    const  data = await resp.text();
     jsonData = JSON.parse(data); // jsonData array if filled with bird info now
+    startMobileWebsite();
+}
+
+/*
+    function to start printing the bird cards
+*/
+ function startMobileWebsite() {
 
     //print each bird card in jsonData
     for (let i = 0; i < jsonData.length; i++) {
@@ -53,7 +62,6 @@ async function startMobileWebsite() {
 */
 function searchNames(searchArray, input) {
     let contains = new Array(); // array which will be filled with birds who match search
-    let find = input.normalize("NFC");
     for (let i = 0; i < searchArray.length; i++) {
         let bird = searchArray[i];
 
@@ -95,7 +103,7 @@ function searchEvent(eventData) {
     let dataCount = 0;//count to keep track of data2 length
     let search = document.getElementById('searchbar');
     let searchFor = search.value.toLowerCase();
-
+    search.value = "";
     /*
         this if/else section handles the text search
         it calls a method called 'searchNames' which 
@@ -204,6 +212,8 @@ function printing(arr) {
     let found = document.getElementById('webText');
     let num = arr.length;
     found.textContent = num + ' results found.';
+    redHearts(arr);
+    scrollToTop();
 }
 
 /*
@@ -211,7 +221,7 @@ function printing(arr) {
     will return to the main screen of all 68 bird 
     cards and scroll back to the top.
 */
-let homeButton = document.getElementById('home');
+let homeButton = document.getElementById('home-button');
 homeButton.addEventListener('click', function () {
 
     reloadBirds();
@@ -219,7 +229,7 @@ homeButton.addEventListener('click', function () {
     //change text back to original if home is pressed
     let found = document.getElementById('webText');
     found.textContent = 'COSC 203 - Assignment One';
-    scrollToTop();
+    redHearts(jsonData);
 });
 
 
@@ -259,6 +269,17 @@ function printCards(array, count) {
     photo.src = bird.photo.source;
     card.appendChild(photo);// add photo to card
 
+     //like buttton
+     let heart = document.createElement('button');
+     heart.setAttribute('class', 'likeButton');
+     let heartTxt = document.createElement('p');
+     heartTxt.setAttribute('class', 'heartTxt');
+     heartTxt.setAttribute('id', bird.scientific_name + 'Heart');
+     heart.addEventListener('click', function () { likeBird(bird.scientific_name) }); //add action listener
+     heartTxt.textContent = '🤍';
+     heart.appendChild(heartTxt);
+     card.appendChild(heart);//add likes button to card
+
     //bird name
     let maori = array[count].primary_name;
     let topInfo = document.createElement('div');
@@ -274,8 +295,11 @@ function printCards(array, count) {
     bottomInfo.setAttribute('class', 'bottomInfo');
     let name = bird.english_name;
     let engName = document.createElement('h2');
+    let nameBackground = document.createElement('div');
+    nameBackground.setAttribute('class', 'nameBackground');
+    nameBackground.appendChild(engName);
     engName.textContent = name;
-    bottomInfo.appendChild(engName);//add english name to bottom info div
+    bottomInfo.appendChild(nameBackground);//add english name to bottom info div
     let divide = document.createElement('hr');
     divide.setAttribute('class', 'cardHR');
     bottomInfo.appendChild(divide);//add divide to bottom info div
@@ -352,7 +376,7 @@ function printCards(array, count) {
     creditsDiv.setAttribute('class', 'credits');
     credits.textContent = 'Photo by ' + bird.photo.credit;
     creditsDiv.appendChild(credits);
-    bottomInfo.appendChild(creditsDiv);//add photo credits to bottom info
+    card.appendChild(creditsDiv);//add photo credits to bottom info
 
     card.appendChild(bottomInfo);//add bottom info div to card
 
@@ -366,6 +390,8 @@ function printCards(array, count) {
             cardArea.style.backgroundColor = col;
             card.style.borderColor = col;
             photo.style.borderColor = col;
+            nameBackground.style.backgroundColor = "rgba(1, 1, 1, 0.7)";
+            nameBackground.style.borderTopColor = col;
         }
     }
 
@@ -389,6 +415,58 @@ function com2Ext(array) {
         one = one.concat(array.filter(d => d.status == colours[i][0]));
     }
      return one;
+}
+
+//array to hold currently liked birds
+let likes = new Array();
+/*
+    function for when the heart button is clicked
+    if heart is red (already liked), it will make the 
+    heart white and call 'removeBird' to remove the 
+    bird from the likes array.
+    if the heart is white, it will make the heart red and 
+    then add the bird to the likes array.
+*/
+function likeBird(name){
+    
+    let heart = document.getElementById(name + 'Heart');
+    if(heart.textContent == '❤️'){//then unlike it
+        heart.textContent = '🤍';
+        removeBird(name);
+    }else{//like it
+        likes = likes.concat(jsonData.filter(d => d.scientific_name == name));
+        redHearts(likes);
+    }    
+}
+
+/*
+    function to remove a liked bird from the array
+*/
+function removeBird(name){
+    
+    for(let i = 0; i < likes.length; i++){
+        if(likes[i].scientific_name == name) likes.splice(i,1);
+    }
+}
+
+/*
+    function to make all liked birds have red hearts
+*/
+function redHearts(arr){
+    for(let l = 0; l < likes.length; l++){
+        let heart = document.getElementById(likes[l].scientific_name + 'Heart');
+        if(heart)heart.textContent = '❤️'; 
+    }  
+}
+
+// add event listener to likes button in topbar
+let likePg = document.getElementById('likes');
+likePg.addEventListener('click', likePage);
+/*
+    function to show all the currently liked birds
+*/
+function likePage(){
+    printing(likes);
 }
 
 //date area in topbar
@@ -417,13 +495,13 @@ topbar.insertBefore(sidebarButton, home);//insert the sidebar button at the star
 function sidebarOpen() {
 
     let side = document.getElementById('mySidebar');
-    if (sidebarButton.textContent == 'X') {//means sidebar is open 
+    if (sidebarButton.textContent == 'x') {//means sidebar is open 
         side.style.display = "none";// close sidebar
         sidebarButton.textContent = '☰';
     } else {//means sidebar is closed
         side.style.width = "90%";//open sidebar
         side.style.display = "block";
-        sidebarButton.textContent = 'X';
+        sidebarButton.textContent = 'x';
     }
 
 }

@@ -1,18 +1,68 @@
 Poppy Pakinui Schlaadt - 6057450
 webpage:
 https://schpo592.cspages.otago.ac.nz/203-assignment-1
-*link doesnt work need to make a page for it on GitLab??*
 repository:
 https://altitude.otago.ac.nz/schpo592/203-assignment-1
 
 COSC203 - Assignment One
 
-* a list of any third party code/libraries used
-- dont think i used any
+1) A list of any third party code/libraries used.
+- Did not use any.
 
 
-* a brief description of any unresolved issues
+
+2) A brief description of any unresolved issues.
+
+Still some problems with the websites responsiveness in realtion to tab sizes.
+I was unable to check lots of different sizes (mostly mobile ratios), so some of 
+the resizing may be incorrect. 
+I have corrected any I found, but there may be more I didnt see.
+
+If a string being searched has a space at the end of it (i.e. 'south ' rather than 
+'south) the name search only comes up with birds whos names also have the space (i.e. 
+'south ' will not match 'southland').
+I'm not sure if this is what it is supposed to be like or if you should ignore the 
+last space in the string being searched.
+
+There is an inline bit of Javascript code, which I could not find a better way around.
+The majority of the code is in seperate files but this was the only way I was able to 
+figure out how to get the html to select between one of two .js files.
+
+Liked birds reset after the page is refreshed.
+
+Boa.html passes the W3C Validator with 0 errors and 0 warnings, but since I have created 
+some html in my .js files I'm not sure if that needs to be checked in there too, I can't 
+figure out an easy way to check the whole thing.
 
 
-* a brief description of any enhancements or extra features for bonus marks
+
+3) A brief description of any enhancements or extra features for bonus marks.
+
+When you are on a device whos screen in larger than 600px, you are able to click the 
+order or family name on the bird card and the page will reload with all (if any) 
+birds sharing that same family/order.
+
+A home button in the top left corner which reloads all 68 birds and scrolls back to 
+the top of the page.
+
+On a device with a width of less than 600px the sidebar is hidden, it opens when 
+you click the button in the far left '☰' (three horizontal lines). 
+You can exit the sidebar by clicking the same button (when open the buttons text is 'X') 
+or clicking the filter results button.
+
+In the sort by dropdown in the sidebar, I added several options:
+- Lightest to Heaviest
+- Heaviest to Lightest
+- Shortest to Tallest
+- Tallest to Shortest
+- A to Z by Scientific name
+- Z to A by Scientific name
+- Common to Extinct
+- Extinct to Common
+
+I made a heart button that appears over the photo of each bird.
+It works on both mobile and desktop.
+A like button was added beside the home button which shows all the birds 
+you have liked.
+You can unlike birds aswell.
 

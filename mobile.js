@@ -3,7 +3,7 @@
     smaller than 600px. 
     i.e. a mobile phone
 */
-const birdFile = "data/nzbird.json";
+const birdFile = "./data/nzbird.json";
 let jsonData; // inital json file bird array
 /*
     array of colours and which conservation status they represent
@@ -20,11 +20,11 @@ fetchData();
     function to fetch data 
 */
 async function fetchData(){
-    const resp = await fetch(birdFile);
+    const response = await fetch(birdFile);
     if(!resp.ok){
-        console.error(resp.status);
+        console.error(response.status);
     }
-    const  data = await resp.text();
+    const  data = await response.text();
     jsonData = JSON.parse(data); // jsonData array if filled with bird info now
     startMobileWebsite();
 }

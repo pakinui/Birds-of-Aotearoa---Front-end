@@ -4,7 +4,7 @@
     i.e. a computer, tablet
 */
 
-const birdFile = './data/nzbird.json';
+const birdFile = "./data/nzbird.json";
 let jsonData; // inital json file bird array
 /*
     array of colours and which conservation status they represent
@@ -21,12 +21,9 @@ fetchData();
 */
 async function fetchData(){
     let response = await fetch(birdFile);
-    console.log(response);
     if(!response.ok){
-        console.error(resp.status);
-        console.log('fetch UNsucsessful');
+        console.error(response.status);
     }
-    console.log('fetch successful');
     let data = await response.text();
     jsonData = JSON.parse(data); // jsonData array if filled with bird info now
     startDesktopWebsite();

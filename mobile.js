@@ -21,7 +21,7 @@ fetchData();
 */
 async function fetchData(){
     const response = await fetch(birdFile);
-    if(!resp.ok){
+    if(!response.ok){
         console.error(response.status);
     }
     const  data = await response.text();

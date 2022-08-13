@@ -4,7 +4,7 @@
     i.e. a computer, tablet
 */
 
-const birdFile = "data/nzbird.json";
+const birdFile = './data/nzbird.json';
 let jsonData; // inital json file bird array
 /*
     array of colours and which conservation status they represent
@@ -20,11 +20,14 @@ fetchData();
     function to fetch data 
 */
 async function fetchData(){
-    const resp = await fetch(birdFile);
-    if(!resp.ok){
+    let response = await fetch(birdFile);
+    console.log(response);
+    if(!response.ok){
         console.error(resp.status);
+        console.log('fetch UNsucsessful');
     }
-    const  data = await resp.text();
+    console.log('fetch successful');
+    let data = await response.text();
     jsonData = JSON.parse(data); // jsonData array if filled with bird info now
     startDesktopWebsite();
 }
@@ -490,34 +493,4 @@ let today = new Date();
 //+1 to the month as the months are from 0-11
 let dayString = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
 date.textContent = dayString;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

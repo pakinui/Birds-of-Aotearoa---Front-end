@@ -19,6 +19,7 @@ This data was kindly provided to us under good faith under the condition it is o
 
 ## Home Page
 
-![image](extra\main_screen.png)
+<img src="extra/main_screen.png" />
+
 
 To visit the webpage follow: https://pakinui.github.io/Birds-of-Aotearoa---Front-end/
